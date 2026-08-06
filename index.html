@@ -92,19 +92,11 @@
       }
 
       .quote {
-        margin: 0 0 14px;
-        font-size: clamp(1.05rem, 2vw, 1.25rem);
-        font-style: italic;
-        color: #fef3c7;
-        opacity: 0.95;
-        animation: fadeUp 0.8s ease-out both;
+        display: none;
       }
 
       .subtext {
-        margin: 0 0 18px;
-        font-size: 0.95rem;
-        color: rgba(254, 243, 199, 0.82);
-        animation: fadeUp 1s ease-out both;
+        display: none;
       }
 
       a {
@@ -183,17 +175,14 @@
     <main>
       <div class="eyebrow">Whiscovery</div>
       <h1>위스키를 아는 것은 하나의 책을 읽는 것이고, 위스키를 마시는 것은 기분이 좋다.</h1>
-      <div class="quote">데이터를 불러오는 중입니다. 잠시만 기다려 주세요.</div>
-      <div class="subtext" id="statusText">연결 상태를 확인하고 있어요. 조금만 더 기다려 주세요.</div>
       <div class="loading-bar" aria-label="로딩 진행률"><span id="loadingFill"></span></div>
-      <div class="timer">자동 이동까지 <span id="countdown">5</span>초</div>
+      <div class="timer"><span id="countdown">5</span></div>
       <a href="https://speckled-people-03c.notion.site/WhiscoveryCS-e080da6ef9774da8b8f5a1fcdb260c2f?source=copy_link">바로 열기</a>
     </main>
     <script>
       const targetUrl = "https://speckled-people-03c.notion.site/WhiscoveryCS-e080da6ef9774da8b8f5a1fcdb260c2f?source=copy_link";
       const delayMs = 5000;
       const countdownEl = document.getElementById("countdown");
-      const statusTextEl = document.getElementById("statusText");
       const loadingFillEl = document.getElementById("loadingFill");
       const startTime = Date.now();
 
@@ -204,9 +193,6 @@
 
         if (countdownEl) countdownEl.textContent = remaining;
         if (loadingFillEl) loadingFillEl.style.width = `${progress}%`;
-        if (statusTextEl && remaining <= 3) {
-          statusTextEl.textContent = "곧 노션 페이지로 연결됩니다. 잠시만 기다려 주세요.";
-        }
 
         if (elapsed < delayMs) {
           requestAnimationFrame(updateLoader);
