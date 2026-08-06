@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="refresh" content="12; url=https://speckled-people-03c.notion.site/WhiscoveryCS-e080da6ef9774da8b8f5a1fcdb260c2f?source=copy_link" />
     <title>Whiscovery</title>
     <style>
       :root {
@@ -119,10 +118,16 @@
       .loading-bar span {
         display: block;
         height: 100%;
-        width: 42%;
+        width: 0%;
         border-radius: inherit;
         background: linear-gradient(90deg, #fef3c7, #f59e0b 45%, #fef3c7 100%);
-        animation: loading 2.2s ease-in-out infinite;
+        transition: width 0.12s linear;
+      }
+
+      .timer {
+        margin: 6px 0 20px;
+        font-size: 0.95rem;
+        color: rgba(254, 243, 199, 0.9);
       }
 
       @keyframes shimmer {
@@ -142,15 +147,40 @@
       <h1>위스키를 아는 것은 하나의 책을 읽는 것이고, 위스키를 마시는 것은 기분이 좋다.</h1>
       <p>당신의 위스키 여정을 노션에서 더 깊이 만나보세요.</p>
       <div class="quote">데이터를 불러오는 중입니다. 잠시만 기다려 주세요.</div>
-      <div class="subtext">연결 상태를 확인하고 있어요. 조금만 더 기다려 주세요.</div>
-      <div class="loading-bar"><span></span></div>
+      <div class="subtext" id="statusText">연결 상태를 확인하고 있어요. 조금만 더 기다려 주세요.</div>
+      <div class="loading-bar" aria-label="로딩 진행률"><span id="loadingFill"></span></div>
+      <div class="timer">자동 이동까지 <span id="countdown">15</span>초</div>
       <a href="https://speckled-people-03c.notion.site/WhiscoveryCS-e080da6ef9774da8b8f5a1fcdb260c2f?source=copy_link">바로 열기</a>
     </main>
     <script>
       const targetUrl = "https://speckled-people-03c.notion.site/WhiscoveryCS-e080da6ef9774da8b8f5a1fcdb260c2f?source=copy_link";
+      const delayMs = 15000;
+      const countdownEl = document.getElementById("countdown");
+      const statusTextEl = document.getElementById("statusText");
+      const loadingFillEl = document.getElementById("loadingFill");
+      const startTime = Date.now();
+
+      const updateLoader = () => {
+        const elapsed = Date.now() - startTime;
+        const remaining = Math.max(0, Math.ceil((delayMs - elapsed) / 1000));
+        const progress = Math.min(100, (elapsed / delayMs) * 100);
+
+        if (countdownEl) countdownEl.textContent = remaining;
+        if (loadingFillEl) loadingFillEl.style.width = `${progress}%`;
+        if (statusTextEl && remaining <= 3) {
+          statusTextEl.textContent = "곧 노션 페이지로 연결됩니다. 잠시만 기다려 주세요.";
+        }
+
+        if (elapsed < delayMs) {
+          requestAnimationFrame(updateLoader);
+        }
+      };
+
+      requestAnimationFrame(updateLoader);
+
       window.setTimeout(() => {
         window.location.replace(targetUrl);
-      }, 12000);
+      }, delayMs);
     </script>
   </body>
 </html>
