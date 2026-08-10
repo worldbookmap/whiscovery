@@ -2,6 +2,28 @@ import { Client } from "@notionhq/client";
 import { getCollectionByKey } from "@/lib/collections";
 
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
+const listCache = new Map();
+const detailCache = new Map();
+const CACHE_TTL_MS = 60_000;
+
+const getCachedValue = (cache, key) => {
+  const entry = cache.get(key);
+  if (!entry) return null;
+
+  if (Date.now() - entry.timestamp > CACHE_TTL_MS) {
+    cache.delete(key);
+    return null;
+  }
+
+  return entry.value;
+};
+
+const setCachedValue = (cache, key, value) => {
+  cache.set(key, {
+    value,
+    timestamp: Date.now(),
+  });
+};
 
 const richTextToPlain = (field) => {
   if (!field || !Array.isArray(field) || field.length === 0) return "";
@@ -144,9 +166,7 @@ const getFirstImageFromPage = async (page) => {
     return getFileUrl(fileProperty.files[0]);
   }
 
-  const blocks = await getPageChildren(page.id, 20);
-  const firstImage = blocks.find((block) => block.type === "image");
-  return firstImage ? firstImage.image?.external?.url || firstImage.image?.file?.url || "" : "";
+  return "";
 };
 
 const getPageContentBlocks = async (pageId) => {
@@ -213,6 +233,12 @@ export const getWhiskyListByDatabaseId = async (databaseId) => {
     throw new Error("유효한 NOTION_DATABASE_ID가 필요합니다.");
   }
 
+  const cacheKey = `list:${normalizedDatabaseId}`;
+  const cachedItems = getCachedValue(listCache, cacheKey);
+  if (cachedItems) {
+    return cachedItems;
+  }
+
   const collection = ["db-1", "db-2", "db-3", "db-4"]
     .map((key) => getCollectionByKey(key))
     .find((entry) => normalizeDatabaseId(entry?.id) === normalizedDatabaseId);
@@ -226,10 +252,20 @@ export const getWhiskyListByDatabaseId = async (databaseId) => {
     page_size: 100,
   });
 
-  return Promise.all(response.results.map((page) => mapPageToCollectionItem(collection, page)));
+  const items = await Promise.all(response.results.map((page) => mapPageToCollectionItem(collection, page)));
+  setCachedValue(listCache, cacheKey, items);
+
+  return items;
 };
 
 export const getWhiskyItemDetail = async (databaseId, pageId) => {
+  const normalizedDatabaseId = normalizeDatabaseId(databaseId);
+  const cacheKey = `detail:${normalizedDatabaseId}:${pageId}`;
+  const cachedItem = getCachedValue(detailCache, cacheKey);
+  if (cachedItem) {
+    return cachedItem;
+  }
+
   const items = await getWhiskyListByDatabaseId(databaseId);
   const item = items.find((entry) => entry.id === pageId);
 
@@ -238,10 +274,13 @@ export const getWhiskyItemDetail = async (databaseId, pageId) => {
   }
 
   const contentBlocks = await getPageContentBlocks(pageId);
-  return {
+  const detailItem = {
     ...item,
     contentBlocks,
   };
+
+  setCachedValue(detailCache, cacheKey, detailItem);
+  return detailItem;
 };
 
 export const getWhiskyList = async () => {
