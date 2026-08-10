@@ -24,10 +24,15 @@ body {
 body {
   font-family: var(--font-noto-sans-kr);
   color: var(--ink);
-  background:
-    radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.4), transparent 30%),
-    radial-gradient(circle at 85% 20%, rgba(201, 138, 46, 0.2), transparent 28%),
-    linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
+  background-color: var(--bg-top);
+  background-image:
+    linear-gradient(180deg, rgba(249, 245, 236, 0.72), rgba(232, 223, 207, 0.8)),
+    url('/assets/bgBarkkat.jpeg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .hero-title {
