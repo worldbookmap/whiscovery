@@ -56,7 +56,11 @@ export default async function ArchivePage() {
             {!box.errorMessage && box.items.length > 0 ? (
               <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {box.items.slice(0, 6).map((item) => (
-                  <div key={`${box.key}-${item.id}`} className="rounded-2xl border border-white/70 bg-white/70 p-4">
+                  <Link
+                    key={`${box.key}-${item.id}`}
+                    href={`/collections/${box.key}/items/${encodeURIComponent(item.id)}`}
+                    className="rounded-2xl border border-white/70 bg-white/70 p-4 transition hover:-translate-y-1 hover:border-amber/30 hover:bg-white"
+                  >
                     <p className="line-clamp-1 text-sm font-semibold text-ink">{item.title}</p>
                     <div className="mt-2 space-y-1 text-xs leading-relaxed text-ink/70">
                       {(item.displayFields || []).slice(0, 2).map((field) => (
@@ -66,7 +70,7 @@ export default async function ArchivePage() {
                         </p>
                       ))}
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             ) : null}
