@@ -36,20 +36,20 @@ export default function HeroShell({ collection, itemTitle }) {
       <div className="absolute -right-8 -top-10 h-28 w-28 rounded-full bg-amber/20 blur-xl" />
       <div className="absolute -left-10 bottom-0 h-24 w-24 rounded-full bg-oak/20 blur-xl" />
       <nav aria-label="breadcrumb" className="mb-4">
-        <ol className="flex flex-wrap items-center gap-2 text-sm text-ink/70">
+        <ol className="flex min-w-0 items-center gap-2 overflow-hidden text-sm text-ink/70">
           {crumbs.map((crumb, index) => {
             const isCurrent = crumb.current || index === crumbs.length - 1;
 
             return (
-              <li key={`${crumb.label}-${index}`} className="flex items-center gap-2">
+              <li key={`${crumb.label}-${index}`} className="flex min-w-0 items-center gap-2">
                 {isCurrent ? (
-                  <span className="font-semibold text-oak">{crumb.label}</span>
+                  <span className="truncate font-semibold text-oak">{crumb.label}</span>
                 ) : (
-                  <Link href={crumb.href} className="transition hover:text-oak">
+                  <Link href={crumb.href} className="truncate transition hover:text-oak">
                     {crumb.label}
                   </Link>
                 )}
-                {index < crumbs.length - 1 ? <span className="text-ink/35">/</span> : null}
+                {index < crumbs.length - 1 ? <span className="shrink-0 text-ink/35">/</span> : null}
               </li>
             );
           })}

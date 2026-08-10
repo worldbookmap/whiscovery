@@ -40,9 +40,9 @@ export default async function ArchivePage() {
             </div>
 
             <div className="flex flex-wrap items-center gap-3 text-sm text-ink/75">
-              <span className="rounded-full border border-oak/20 px-3 py-1">{box.items.length} entries</span>
+              <span className="rounded-full border border-oak/20 px-3 py-1">{box.items.length}개의 기록들</span>
               <span className="rounded-full border border-oak/20 px-3 py-1">
-                중앙에서 열기
+                기록 모두 보기
                 <span className="ml-2 inline-block transition group-hover:translate-x-1">&gt;</span>
               </span>
             </div>
@@ -81,11 +81,13 @@ export default async function ArchivePage() {
                           <Image
                             src={item.imageUrl}
                             alt={`${item.title} 첫 첨부 사진`}
-                            width={72}
-                            height={72}
-                            quality={45}
-                            sizes="72px"
-                            className="h-16 w-16 object-cover sm:h-18 sm:w-18"
+                            width={48}
+                            height={48}
+                            quality={35}
+                            sizes="48px"
+                            className="h-12 w-12 object-cover sm:h-14 sm:w-14"
+                            priority={false}
+                            loading="lazy"
                             unoptimized
                           />
                         </div>
