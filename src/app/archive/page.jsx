@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import HeroShell from "@/components/hero-shell";
 import { getWhiskyListByDatabaseId } from "@/lib/notion";
@@ -28,15 +29,34 @@ export default async function ArchivePage() {
       <HeroShell />
 
       <section className="mt-8 space-y-8">
-        {boxResults.map((box) => (
-          <Link
-            key={box.key}
-            href={`/collections/${box.key}`}
-            className="group block rounded-3xl border border-white/50 bg-white/65 p-5 shadow-soft transition hover:-translate-y-1 hover:border-amber/40 hover:bg-white/80 sm:p-6"
-          >
-            <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-              <h2 className="hero-title text-2xl font-semibold text-ink transition group-hover:text-oak">{box.title}</h2>
-            </div>
+        {boxResults.map((box) => {
+          const previewImage = box.items.find((item) => item.imageUrl)?.imageUrl;
+
+          return (
+            <Link
+              key={box.key}
+              href={`/collections/${box.key}`}
+              className="group block rounded-3xl border border-white/50 bg-white/65 p-5 shadow-soft transition hover:-translate-y-1 hover:border-amber/40 hover:bg-white/80 sm:p-6"
+            >
+              <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
+                <div className="min-w-0 flex-1">
+                  <h2 className="hero-title text-2xl font-semibold text-ink transition group-hover:text-oak">{box.title}</h2>
+                </div>
+                {previewImage ? (
+                  <div className="overflow-hidden rounded-2xl border border-oak/10 bg-white/80 shadow-sm">
+                    <Image
+                      src={previewImage}
+                      alt={`${box.title} 대표 이미지`}
+                      width={96}
+                      height={96}
+                      quality={45}
+                      sizes="96px"
+                      className="h-20 w-20 object-cover sm:h-24 sm:w-24"
+                      unoptimized
+                    />
+                  </div>
+                ) : null}
+              </div>
 
             <div className="flex flex-wrap items-center gap-3 text-sm text-ink/75">
               <span className="rounded-full border border-oak/20 px-3 py-1">{box.items.length} entries</span>
@@ -74,8 +94,9 @@ export default async function ArchivePage() {
                 ))}
               </div>
             ) : null}
-          </Link>
-        ))}
+            </Link>
+          );
+        })}
       </section>
     </main>
   );

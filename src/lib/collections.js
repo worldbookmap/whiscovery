@@ -7,9 +7,9 @@ export const DATABASE_BOXES = [
     filterProperty: "태그",
     filterLabel: "태그",
     fields: [
-      { key: "leader", label: "정모리더", property: "정모 리더" },
-      { key: "text", label: "텍스트", property: "텍스트" },
       { key: "date", label: "Date", property: "Date" },
+      { key: "leader", label: "정모 리더", property: "정모 리더" },
+      { key: "text", label: "내용", property: "텍스트" },
       { key: "tags", label: "태그", property: "태그" },
     ],
   },
@@ -26,20 +26,8 @@ export const DATABASE_BOXES = [
     ],
   },
   {
-    key: "db-4",
-    title: "매일매일술하나",
-    id: "2a0fccab-745a-4062-a589-8ed229e022d8",
-    titleProperty: "위스키명",
-    filterProperty: "원산지",
-    filterLabel: "원산지",
-    fields: [
-      { key: "kind", label: "술 종류", property: "술종류" },
-      { key: "origin", label: "원산지", property: "원산지" },
-    ],
-  },
-  {
     key: "db-2",
-    title: "Bar",
+    title: "좋은 Bar 찾아 삼만리",
     id: "36d58bae-bedd-446a-9821-8a0282e150f6",
     titleProperty: "바 목록",
     filterProperty: "종류",
@@ -47,6 +35,18 @@ export const DATABASE_BOXES = [
     fields: [
       { key: "participants", label: "참여자", property: "참여자" },
       { key: "kind", label: "종류", property: "종류" },
+    ],
+  },
+  {
+    key: "db-4",
+    title: "매일 매일 술 하나",
+    id: "2a0fccab-745a-4062-a589-8ed229e022d8",
+    titleProperty: "위스키명",
+    filterProperty: "원산지",
+    filterLabel: "원산지",
+    fields: [
+      { key: "kind", label: "술 종류", property: "술종류" },
+      { key: "origin", label: "원산지", property: "원산지" },
     ],
   },
 ];
