@@ -1,3 +1,5 @@
+import WhiskyMapSection from "@/components/whisky-map-section";
+
 export default function HomePage() {
   return (
     <>
@@ -9,17 +11,19 @@ export default function HomePage() {
 
         body {
           min-height: 100vh;
-          display: grid;
-          place-items: center;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
           padding: 24px;
           background:
             linear-gradient(135deg, rgba(255, 247, 221, 0.12), rgba(245, 158, 11, 0.06)),
             radial-gradient(circle at 20% 20%, rgba(253, 230, 138, 0.14), transparent 28%),
             radial-gradient(circle at 80% 80%, rgba(251, 191, 36, 0.1), transparent 26%),
             linear-gradient(135deg, rgba(255, 250, 240, 0.26), rgba(120, 53, 15, 0.32)),
-            url("/assets/bgOpen.jpg") center/cover no-repeat;
+            url('/assets/bgOpen.jpg') center/cover no-repeat;
           color: #111827;
-          overflow: hidden;
+          overflow-x: hidden;
           position: relative;
         }
 
@@ -43,7 +47,7 @@ export default function HomePage() {
         }
 
         .landing-main {
-          width: min(700px, 100%);
+          width: min(760px, 100%);
           text-align: center;
           padding: 48px 40px 42px;
           border-radius: 30px;
@@ -117,12 +121,16 @@ export default function HomePage() {
         }
       `}</style>
 
-      <main className="landing-main">
-        <div className="landing-eyebrow">Whiscovery CS</div>
-        <h1 className="landing-title">위스키를 아는 것은 하나의 역사를 읽는 것이고, 위스키를 마시는 것은 기분이 좋은 것이다.</h1>
-        <a className="landing-link" href="/archive">
-          들어가기
-        </a>
+      <main className="flex w-full max-w-6xl flex-col items-center gap-6">
+        <section className="landing-main">
+          <div className="landing-eyebrow">Whiscovery CS</div>
+          <h1 className="landing-title">위스키를 아는 것은 하나의 역사를 읽는 것이고, 위스키를 마시는 것은 기분이 좋은 것이다.</h1>
+          <a className="landing-link" href="/archive">
+            들어가기
+          </a>
+        </section>
+
+        <WhiskyMapSection />
       </main>
     </>
   );

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import HeroShell from "@/components/hero-shell";
+import WhiskyMapSection from "@/components/whisky-map-section";
 import { getWhiskyListByDatabaseId } from "@/lib/notion";
 import { DATABASE_BOXES } from "@/lib/collections";
 
@@ -27,6 +28,10 @@ export default async function ArchivePage() {
   return (
     <main className="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-4 pb-16 pt-10 sm:px-8">
       <HeroShell />
+
+      <div className="mt-8">
+        <WhiskyMapSection />
+      </div>
 
       <section className="mt-8 space-y-8">
         {boxResults.map((box) => (
