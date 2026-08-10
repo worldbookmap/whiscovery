@@ -54,7 +54,7 @@ export default function CollectionBrowser({ items, collection, collections }) {
             <h2 className="hero-title mt-2 text-3xl font-semibold text-ink">{collection.title}</h2>
           </div>
           <Link
-            href="/"
+            href="/archive"
             className="rounded-full border border-oak/20 px-4 py-2 text-sm font-semibold text-oak transition hover:bg-oak hover:text-white"
           >
             컬렉션 목록으로
