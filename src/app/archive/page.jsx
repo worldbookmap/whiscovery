@@ -80,7 +80,7 @@ export default async function ArchivePage() {
                         <div className="ml-2 shrink-0 overflow-hidden rounded-xl border border-oak/10 bg-white/80 shadow-sm">
                           <Image
                             src={item.imageUrl}
-                            alt={`${item.title} 이미지`}
+                            alt={`${item.title} 첫 첨부 사진`}
                             width={72}
                             height={72}
                             quality={45}
