@@ -57,7 +57,7 @@ export default async function ArchivePage() {
             {!box.errorMessage && box.items.length > 0 ? (
               <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {box.items.slice(0, 6).map((item) => {
-                  const showPreview = box.key === "db-4" && Boolean(item.imageUrl);
+                  const showPreview = Boolean(item.imageUrl);
 
                   return (
                     <Link
