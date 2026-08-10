@@ -9,6 +9,7 @@ export default function HomePage() {
         }
 
         body {
+          min-height: 100vh;
           display: grid;
           place-items: center;
           padding: 24px;
@@ -52,6 +53,7 @@ export default function HomePage() {
           box-shadow: 0 22px 62px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255,255,255,0.32);
           backdrop-filter: blur(18px);
           animation: cardRise 0.8s ease-out both;
+          margin-inline: auto;
         }
 
         .landing-eyebrow {

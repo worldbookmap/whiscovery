@@ -1,6 +1,14 @@
 export default function HeroShell() {
   return (
-    <section className="relative overflow-hidden rounded-3xl border border-white/50 bg-white/65 p-8 shadow-soft sm:p-12">
+    <section
+      className="relative overflow-hidden rounded-3xl border border-white/50 bg-white/65 p-8 shadow-soft sm:p-12"
+      style={{
+        backgroundImage:
+          'linear-gradient(135deg, rgba(255, 252, 247, 0.78), rgba(255, 244, 224, 0.52)), url("/assets/bgMain.jpeg")',
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+      }}
+    >
       <div className="absolute -right-8 -top-10 h-28 w-28 rounded-full bg-amber/20 blur-xl" />
       <div className="absolute -left-10 bottom-0 h-24 w-24 rounded-full bg-oak/20 blur-xl" />
       <div className="mb-3 flex flex-wrap items-center gap-2">
@@ -8,7 +16,7 @@ export default function HeroShell() {
           우리들의 기록 창고
         </p>
         <a
-          href="https://www.notion.so/"
+          href="https://speckled-people-03c.notion.site/WhiscoveryCS-e080da6ef9774da8b8f5a1fcdb260c2f?pvs=74"
           target="_blank"
           rel="noreferrer"
           className="inline-flex items-center rounded-full border border-oak/15 bg-white/75 px-3 py-1 text-xs font-semibold tracking-wide text-oak transition hover:border-oak/35 hover:bg-white"
