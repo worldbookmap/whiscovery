@@ -29,34 +29,15 @@ export default async function ArchivePage() {
       <HeroShell />
 
       <section className="mt-8 space-y-8">
-        {boxResults.map((box) => {
-          const previewImage = box.items.find((item) => item.imageUrl)?.imageUrl;
-
-          return (
-            <Link
-              key={box.key}
-              href={`/collections/${box.key}`}
-              className="group block rounded-3xl border border-white/50 bg-white/65 p-5 shadow-soft transition hover:-translate-y-1 hover:border-amber/40 hover:bg-white/80 sm:p-6"
-            >
-              <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
-                <div className="min-w-0 flex-1">
-                  <h2 className="hero-title text-2xl font-semibold text-ink transition group-hover:text-oak">{box.title}</h2>
-                </div>
-                {previewImage ? (
-                  <div className="overflow-hidden rounded-2xl border border-oak/10 bg-white/80 shadow-sm">
-                    <Image
-                      src={previewImage}
-                      alt={`${box.title} 대표 이미지`}
-                      width={96}
-                      height={96}
-                      quality={45}
-                      sizes="96px"
-                      className="h-20 w-20 object-cover sm:h-24 sm:w-24"
-                      unoptimized
-                    />
-                  </div>
-                ) : null}
-              </div>
+        {boxResults.map((box) => (
+          <Link
+            key={box.key}
+            href={`/collections/${box.key}`}
+            className="group block rounded-3xl border border-white/50 bg-white/65 p-5 shadow-soft transition hover:-translate-y-1 hover:border-amber/40 hover:bg-white/80 sm:p-6"
+          >
+            <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+              <h2 className="hero-title text-2xl font-semibold text-ink transition group-hover:text-oak">{box.title}</h2>
+            </div>
 
             <div className="flex flex-wrap items-center gap-3 text-sm text-ink/75">
               <span className="rounded-full border border-oak/20 px-3 py-1">{box.items.length} entries</span>
@@ -75,28 +56,47 @@ export default async function ArchivePage() {
 
             {!box.errorMessage && box.items.length > 0 ? (
               <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                {box.items.slice(0, 6).map((item) => (
-                  <Link
-                    key={`${box.key}-${item.id}`}
-                    href={`/collections/${box.key}/items/${encodeURIComponent(item.id)}`}
-                    className="rounded-2xl border border-white/70 bg-white/70 p-4 transition hover:-translate-y-1 hover:border-amber/30 hover:bg-white"
-                  >
-                    <p className="line-clamp-1 text-sm font-semibold text-ink">{item.title}</p>
-                    <div className="mt-2 space-y-1 text-xs leading-relaxed text-ink/70">
-                      {(item.displayFields || []).slice(0, 2).map((field) => (
-                        <p key={field.key} className="line-clamp-1">
-                          <span className="mr-1 text-ink/45">{field.label}</span>
-                          {field.value}
-                        </p>
-                      ))}
-                    </div>
-                  </Link>
-                ))}
+                {box.items.slice(0, 6).map((item) => {
+                  const showPreview = box.key === "db-4" && item.imageUrl;
+
+                  return (
+                    <Link
+                      key={`${box.key}-${item.id}`}
+                      href={`/collections/${box.key}/items/${encodeURIComponent(item.id)}`}
+                      className="flex items-start justify-between gap-3 rounded-2xl border border-white/70 bg-white/70 p-4 transition hover:-translate-y-1 hover:border-amber/30 hover:bg-white"
+                    >
+                      <div className="min-w-0 flex-1">
+                        <p className="line-clamp-1 text-sm font-semibold text-ink">{item.title}</p>
+                        <div className="mt-2 space-y-1 text-xs leading-relaxed text-ink/70">
+                          {(item.displayFields || []).slice(0, 2).map((field) => (
+                            <p key={field.key} className="line-clamp-1">
+                              <span className="mr-1 text-ink/45">{field.label}</span>
+                              {field.value}
+                            </p>
+                          ))}
+                        </div>
+                      </div>
+                      {showPreview ? (
+                        <div className="ml-2 shrink-0 overflow-hidden rounded-xl border border-oak/10 bg-white/80 shadow-sm">
+                          <Image
+                            src={item.imageUrl}
+                            alt={`${item.title} 이미지`}
+                            width={72}
+                            height={72}
+                            quality={45}
+                            sizes="72px"
+                            className="h-16 w-16 object-cover sm:h-18 sm:w-18"
+                            unoptimized
+                          />
+                        </div>
+                      ) : null}
+                    </Link>
+                  );
+                })}
               </div>
             ) : null}
-            </Link>
-          );
-        })}
+          </Link>
+        ))}
       </section>
     </main>
   );
