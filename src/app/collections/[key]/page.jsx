@@ -36,7 +36,7 @@ export default async function CollectionDetailPage({ params }) {
 
   return (
     <main className="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-4 pb-16 pt-10 sm:px-8">
-      <HeroShell />
+      <HeroShell collection={collection} />
       <CollectionBrowser items={items} collection={collection} collections={DATABASE_BOXES} />
     </main>
   );

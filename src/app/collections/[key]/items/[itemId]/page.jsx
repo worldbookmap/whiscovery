@@ -25,7 +25,7 @@ export default async function ItemDetailPage({ params }) {
 
   return (
     <main className="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-4 pb-16 pt-10 sm:px-8">
-      <HeroShell />
+      <HeroShell collection={collection} itemTitle={item.title} />
 
       <section className="mx-auto mt-8 flex w-full max-w-4xl flex-col gap-6">
         <div className="rounded-3xl border border-white/50 bg-white/65 p-5 shadow-soft sm:p-6">
