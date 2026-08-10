@@ -157,6 +157,24 @@ const getPageChildren = async (pageId, pageSize = 50) => {
   return response.results || [];
 };
 
+const getFirstImageFromPageBlocks = async (pageId) => {
+  if (!pageId) return "";
+
+  try {
+    const blocks = await getPageChildren(pageId, 100);
+
+    for (const block of blocks) {
+      if (block.type === "image") {
+        return block.image?.external?.url || block.image?.file?.url || "";
+      }
+    }
+  } catch (error) {
+    console.warn("Failed to read image blocks from Notion page:", error.message);
+  }
+
+  return "";
+};
+
 const getFirstImageFromPage = async (page) => {
   const coverImage = getImageUrl(page.cover);
   if (coverImage) return coverImage;
@@ -166,7 +184,7 @@ const getFirstImageFromPage = async (page) => {
     return getFileUrl(fileProperty.files[0]);
   }
 
-  return "";
+  return getFirstImageFromPageBlocks(page.id);
 };
 
 const getPageContentBlocks = async (pageId) => {
