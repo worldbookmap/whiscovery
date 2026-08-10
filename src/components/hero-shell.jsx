@@ -12,7 +12,7 @@ export default function HeroShell({ collection, itemTitle }) {
   if (pathname === "/archive") {
     crumbs.push({ label: "아카이브", href: "/archive", current: true });
   } else if (segments[0] === "collections") {
-    crumbs.push({ label: "컬렉션", href: "/archive" });
+    crumbs.push({ label: "아카이브", href: "/archive" });
 
     if (collection) {
       crumbs.push({ label: collection.title, href: `/collections/${collection.key}`, current: !itemTitle });
