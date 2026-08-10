@@ -40,7 +40,7 @@ export default async function ArchivePage() {
             </div>
 
             <div className="flex flex-wrap items-center gap-3 text-sm text-ink/75">
-              <span className="rounded-full border border-emerald/25 bg-emerald/15 px-3 py-1 text-emerald-700">{box.items.length}개의 기록들</span>
+              <span className="rounded-full border border-emerald-300 bg-emerald-200 px-3 py-1 text-black">{box.items.length}개의 기록들</span>
               <span className="rounded-full border border-oak/20 px-3 py-1">
                 기록 모두 보기
                 <span className="ml-2 inline-block transition group-hover:translate-x-1">&gt;</span>

@@ -63,7 +63,7 @@ export default function HeroShell({ collection, itemTitle }) {
           href="https://speckled-people-03c.notion.site/WhiscoveryCS-e080da6ef9774da8b8f5a1fcdb260c2f?pvs=74"
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center rounded-full border border-amber/25 bg-amber/15 px-3 py-1 text-xs font-semibold tracking-wide text-oak transition hover:border-amber/35 hover:bg-amber/20"
+          className="inline-flex items-center rounded-full border border-sky-300 bg-sky-200 px-3 py-1 text-xs font-semibold tracking-wide text-black transition hover:border-sky-400 hover:bg-sky-300"
         >
           노션바로가기
         </a>
