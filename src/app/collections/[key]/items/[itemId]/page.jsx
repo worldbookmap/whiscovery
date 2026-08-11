@@ -6,6 +6,8 @@ import DetailContentBlocks from "@/components/detail-content-blocks";
 import { DATABASE_BOXES, getCollectionByKey } from "@/lib/collections";
 import { getWhiskyItemDetail, getWhiskyListByDatabaseId } from "@/lib/notion";
 
+export const revalidate = 300;
+
 export default async function ItemDetailPage({ params }) {
   const collection = getCollectionByKey(params.key);
 

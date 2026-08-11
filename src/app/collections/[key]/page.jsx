@@ -4,6 +4,8 @@ import HeroShell from "@/components/hero-shell";
 import { DATABASE_BOXES, getCollectionByKey } from "@/lib/collections";
 import { getWhiskyListByDatabaseId } from "@/lib/notion";
 
+export const revalidate = 300;
+
 export default async function CollectionDetailPage({ params }) {
   const collection = getCollectionByKey(params.key);
 

@@ -4,6 +4,8 @@ import CollectionPreviewSection from "@/components/collection-preview-section";
 import { getWhiskyListByDatabaseId } from "@/lib/notion";
 import { DATABASE_BOXES } from "@/lib/collections";
 
+export const revalidate = 300;
+
 export default async function ArchivePage() {
   const boxResults = await Promise.all(
     DATABASE_BOXES.map(async (database) => {
