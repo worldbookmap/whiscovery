@@ -1,9 +1,91 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import distilleries from "../../assets/major_whisky_distilleries.json";
 
-export default function WhiskyMapSection() {
+const normalizeText = (value) => {
+  return String(value || "")
+    .toLowerCase()
+    .normalize("NFKC")
+    .replace(/[()]/g, " ")
+    .replace(/[^a-z0-9\u3131-\u318E\uAC00-\uD7A3\s]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+};
+
+const normalizeDistilleryLabel = (value) => {
+  return normalizeText(value)
+    .replace(/\bdistillery\b/g, "")
+    .replace(/\bthe\b/g, "")
+    .replace(/\bwhisky\b/g, "")
+    .replace(/\bwhiskey\b/g, "")
+    .replace(/\s증류소$/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+};
+
+const escapeHtml = (value) => {
+  return String(value || "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+};
+
+const buildPostHref = (collectionKey, itemId) => {
+  return `/collections/${collectionKey}/items/${encodeURIComponent(itemId)}`;
+};
+
+const buildItemCorpus = (item) => {
+  const values = [item.title, ...(item.displayFields || []).map((field) => field.value)];
+  return normalizeText(values.filter(Boolean).join(" "));
+};
+
+const matchDistilleryPosts = (locations, sourceItems, collectionKey) => {
+  const items = (sourceItems || []).map((item) => ({
+    id: item.id,
+    title: item.title,
+    href: buildPostHref(collectionKey, item.id),
+    corpus: buildItemCorpus(item),
+  }));
+
+  return locations.map((location) => {
+    const koKey = normalizeDistilleryLabel(location.name_ko);
+    const enKey = normalizeDistilleryLabel(location.name);
+    const keys = [koKey, enKey].filter(Boolean);
+
+    const linkedPosts = items.filter((item) => keys.some((key) => key && item.corpus.includes(key)));
+
+    return {
+      ...location,
+      linkedPosts,
+    };
+  });
+};
+
+const makePopupHtml = (item) => {
+  const heading = `<strong>${escapeHtml(item.name_ko || item.name)}</strong><br />${escapeHtml(item.name)}`;
+
+  if (!item.linkedPosts?.length) {
+    return heading;
+  }
+
+  const previewItems = item.linkedPosts.slice(0, 3);
+  const links = previewItems
+    .map(
+      (post) =>
+        `<a href="${escapeHtml(post.href)}" style="display:block; margin-top:4px; color:#8a5a24; text-decoration:underline;">${escapeHtml(post.title)}</a>`
+    )
+    .join("");
+  const remainder = item.linkedPosts.length - previewItems.length;
+  const extra = remainder > 0 ? `<div style="margin-top:4px; font-size:12px; color:#6b7280;">외 ${remainder}개 기록</div>` : "";
+
+  return `${heading}<div style="margin-top:8px; padding-top:8px; border-top:1px solid rgba(17,24,39,0.12); font-size:13px;"><div style="font-weight:600; margin-bottom:2px;">연결된 게시물</div>${links}${extra}</div>`;
+};
+
+export default function WhiskyMapSection({ linkedItems = [], linkedCollectionKey = "db-4" }) {
   const [query, setQuery] = useState("");
   const [selectedDistillery, setSelectedDistillery] = useState(null);
   const [leafletReady, setLeafletReady] = useState(false);
@@ -12,13 +94,17 @@ export default function WhiskyMapSection() {
   const markersRef = useRef([]);
   const mapInstanceRef = useRef(null);
 
-  const locationList = useMemo(() => {
+  const baseLocationList = useMemo(() => {
     return distilleries.map((item) => ({
       ...item,
       latitude: Number(item.latitude ?? item.lat ?? 0),
       longitude: Number(item.longitude ?? item.lng ?? 0),
     }));
   }, []);
+
+  const locationList = useMemo(() => {
+    return matchDistilleryPosts(baseLocationList, linkedItems, linkedCollectionKey);
+  }, [baseLocationList, linkedCollectionKey, linkedItems]);
 
   useEffect(() => {
     if (typeof window === "undefined") {
@@ -83,7 +169,9 @@ export default function WhiskyMapSection() {
         }),
       })
         .addTo(map)
-        .bindPopup(`<strong>${item.name_ko || item.name}</strong><br />${item.name}`);
+        .bindPopup(makePopupHtml(item));
+
+      marker.__distilleryName = item.name;
 
       markerLayer.push(marker);
     });
@@ -101,11 +189,7 @@ export default function WhiskyMapSection() {
     const isSelected = Boolean(selectedDistillery);
 
     markersRef.current.forEach((marker) => {
-      const popup = marker.getPopup?.();
-      const content = popup?.getContent?.() ?? "";
-      const isTarget = Boolean(
-        selectedDistillery && content.includes(selectedDistillery.name_ko || selectedDistillery.name)
-      );
+      const isTarget = Boolean(selectedDistillery && marker.__distilleryName === selectedDistillery.name);
 
       if (!L) {
         return;
@@ -124,9 +208,7 @@ export default function WhiskyMapSection() {
     }
 
     const targetMarker = markersRef.current.find((marker) => {
-      const popup = marker.getPopup?.();
-      const content = popup?.getContent?.() ?? "";
-      return content.includes(selectedDistillery.name_ko || selectedDistillery.name);
+      return marker.__distilleryName === selectedDistillery.name;
     });
 
     if (!targetMarker) {
@@ -226,6 +308,18 @@ export default function WhiskyMapSection() {
       {selectedDistillery ? (
         <div className="mt-4 rounded-2xl border border-amber/20 bg-amber/10 p-3 text-sm text-ink">
           선택된 증류소: <span className="font-semibold">{selectedDistillery.name_ko}</span> ({selectedDistillery.name})
+          {selectedDistillery.linkedPosts?.length ? (
+            <div className="mt-3 space-y-1">
+              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-oak/80">연결된 게시물</p>
+              {selectedDistillery.linkedPosts.slice(0, 6).map((post) => (
+                <div key={post.id}>
+                  <Link href={post.href} className="text-oak underline decoration-oak/50 underline-offset-2 hover:text-oak/80">
+                    {post.title}
+                  </Link>
+                </div>
+              ))}
+            </div>
+          ) : null}
         </div>
       ) : (
         <div className="mt-4 rounded-2xl border border-oak/10 bg-white/70 p-3 text-sm text-ink/70">
