@@ -160,11 +160,10 @@ export default function CollectionPreviewSection({ box }) {
                   <button
                     type="button"
                     onClick={() => setVisibleCount((prev) => Math.min(prev + itemsPerRow, box.items.length))}
-                    className="group inline-flex items-center justify-center rounded-full border border-oak/20 bg-white/80 px-4 py-2 text-sm font-semibold text-oak/85 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-amber/35 hover:bg-white hover:text-oak active:translate-y-0"
+                    className="group relative inline-flex items-center justify-center px-3 py-2 text-sm font-semibold text-oak/80 transition-all duration-200 hover:text-oak"
                   >
-                    <span className="mr-2 h-1.5 w-1.5 rounded-full bg-amber/70 transition group-hover:scale-125" />
-                    더 보기
-                    <span className="ml-2 h-1.5 w-1.5 rounded-full bg-amber/70 transition group-hover:scale-125" />
+                    <span className="absolute bottom-1.5 h-px w-full rounded-full bg-gradient-to-r from-transparent via-amber/60 to-transparent transition-all duration-200 group-hover:h-2 group-hover:rounded-full group-hover:bg-amber/20" />
+                    <span className="relative">더 보기</span>
                   </button>
                 </div>
               ) : null}
