@@ -112,8 +112,15 @@ const normalizeImageUrl = (imageUrl) => {
 
   try {
     const url = new URL(imageUrl);
+    const isNotionHosted = [
+      "notion.so",
+      "notion.site",
+      "prod-files.secure",
+      "secure.notion-static.com",
+      "s3.us-west-2.amazonaws.com",
+    ].some((hostname) => url.hostname.includes(hostname));
 
-    if (url.hostname.includes("notion.so") || url.hostname.includes("prod-files.secure") || url.hostname.includes("s3.us-west-2.amazonaws.com")) {
+    if (isNotionHosted) {
       const searchParams = url.searchParams;
       searchParams.set("format", "webp");
       searchParams.set("quality", "80");

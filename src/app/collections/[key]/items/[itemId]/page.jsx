@@ -65,21 +65,6 @@ export default async function ItemDetailPage({ params }) {
         </div>
 
         <article className="overflow-hidden rounded-3xl border border-white/50 bg-white/70 shadow-soft">
-          {item.imageUrl ? (
-            <Image
-              src={item.imageUrl}
-              alt={item.title}
-              width={640}
-              height={360}
-              quality={20}
-              sizes="(max-width: 768px) 100vw, 768px"
-              className="h-72 w-full object-cover"
-              unoptimized
-            />
-          ) : (
-            <div className="flex h-72 w-full items-center justify-center bg-oak/10 text-sm text-oak/45">No image</div>
-          )}
-
           <div className="grid gap-6 p-6 md:p-8">
             <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
               {item.displayFields.map((field) => (

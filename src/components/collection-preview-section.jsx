@@ -5,12 +5,22 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 function PreviewImage({ src, alt }) {
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [status, setStatus] = useState("loading");
+  const isLoaded = status === "loaded";
+  const isError = status === "error";
+
+  if (isError) {
+    return (
+      <div className="ml-2 flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-oak/10 bg-oak/10 text-[10px] font-semibold uppercase tracking-[0.2em] text-oak/45 shadow-sm sm:h-14 sm:w-14">
+        No image
+      </div>
+    );
+  }
 
   return (
-    <div className="ml-2 shrink-0 overflow-hidden rounded-xl border border-oak/10 bg-white/80 shadow-sm">
+    <div className="ml-2 relative h-12 w-12 shrink-0 overflow-hidden rounded-xl border border-oak/10 bg-white/80 shadow-sm sm:h-14 sm:w-14">
       {!isLoaded ? (
-        <div className="relative flex h-12 w-12 items-center justify-center overflow-hidden bg-[linear-gradient(110deg,rgba(245,158,11,0.14)_0%,rgba(255,255,255,0.75)_45%,rgba(245,158,11,0.14)_90%)] bg-[length:200%_100%] animate-[shimmer_1.2s_linear_infinite] sm:h-14 sm:w-14">
+        <div className="absolute inset-0 z-10 flex items-center justify-center overflow-hidden bg-[linear-gradient(110deg,rgba(245,158,11,0.14)_0%,rgba(255,255,255,0.75)_45%,rgba(245,158,11,0.14)_90%)] bg-[length:200%_100%] animate-[shimmer_1.2s_linear_infinite]">
           <div className="h-4 w-4 rounded-full bg-oak/25" />
         </div>
       ) : null}
@@ -21,11 +31,12 @@ function PreviewImage({ src, alt }) {
         height={48}
         quality={20}
         sizes="48px"
-        className={`h-12 w-12 object-cover transition-opacity duration-300 sm:h-14 sm:w-14 ${isLoaded ? "block opacity-100" : "hidden opacity-0"}`}
+        className={`h-full w-full object-cover transition-opacity duration-300 ${isLoaded ? "opacity-100" : "opacity-0"}`}
         priority={false}
         loading="lazy"
         unoptimized
-        onLoad={() => setIsLoaded(true)}
+        onLoad={() => setStatus("loaded")}
+        onError={() => setStatus("error")}
       />
     </div>
   );
