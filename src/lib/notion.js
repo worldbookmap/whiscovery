@@ -107,8 +107,10 @@ const getImageUrl = (cover) => {
   return "";
 };
 
-const normalizeImageUrl = (imageUrl) => {
+const normalizeImageUrl = (imageUrl, options = {}) => {
   if (!imageUrl) return "";
+
+  const { width = 0, quality = 80 } = options;
 
   try {
     const url = new URL(imageUrl);
@@ -123,7 +125,12 @@ const normalizeImageUrl = (imageUrl) => {
     if (isNotionHosted) {
       const searchParams = url.searchParams;
       searchParams.set("format", "webp");
-      searchParams.set("quality", "80");
+      searchParams.set("quality", String(quality));
+
+      if (width > 0) {
+        searchParams.set("width", String(width));
+      }
+
       return url.toString();
     }
   } catch (error) {
@@ -183,17 +190,40 @@ const getPageChildren = async (pageId, pageSize = 50) => {
   return response.results || [];
 };
 
+const findFirstImageInBlocks = async (blocks) => {
+  if (!Array.isArray(blocks) || blocks.length === 0) {
+    return "";
+  }
+
+  for (const block of blocks) {
+    if (!block) continue;
+
+    if (block.type === "image") {
+      return block.image?.external?.url || block.image?.file?.url || "";
+    }
+
+    if (block.has_children) {
+      try {
+        const childBlocks = await getPageChildren(block.id, 50);
+        const nestedImage = await findFirstImageInBlocks(childBlocks);
+        if (nestedImage) {
+          return nestedImage;
+        }
+      } catch (error) {
+        continue;
+      }
+    }
+  }
+
+  return "";
+};
+
 const getFirstImageFromPageBlocks = async (pageId) => {
   if (!pageId) return "";
 
   try {
     const blocks = await getPageChildren(pageId, 100);
-
-    for (const block of blocks) {
-      if (block.type === "image") {
-        return block.image?.external?.url || block.image?.file?.url || "";
-      }
-    }
+    return findFirstImageInBlocks(blocks);
   } catch (error) {
     console.warn("Failed to read image blocks from Notion page:", error.message);
   }
@@ -261,11 +291,13 @@ const mapPageToCollectionItem = async (collection, page, options = {}) => {
 
   const searchText = [title, ...displayFields.map((field) => field.value), ...filterValues, contentText].join(" ").toLowerCase();
 
+  const firstImageUrl = await getFirstImageFromPage(page);
+
   return {
     id: page.id,
     title,
     url: page.url,
-    imageUrl: normalizeImageUrl(await getFirstImageFromPage(page)),
+    imageUrl: normalizeImageUrl(firstImageUrl, { width: 240, quality: 70 }),
     displayFields,
     filterValues,
     searchText,
