@@ -25,6 +25,7 @@ export default function CollectionPreviewSection({ box }) {
   const [visibleCount, setVisibleCount] = useState(0);
   const visibleItems = box.items.slice(0, visibleCount);
   const hasMoreItems = visibleCount < box.items.length;
+  const isLoading = visibleCount === 0 && !box.errorMessage;
 
   useEffect(() => {
     if (typeof window === "undefined") {
@@ -73,58 +74,75 @@ export default function CollectionPreviewSection({ box }) {
         </div>
       ) : null}
 
-      {!box.errorMessage && box.items.length > 0 ? (
+      {!box.errorMessage ? (
         <>
-          <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {visibleItems.map((item) => {
-              const showPreview = Boolean(item.imageUrl);
+          {isLoading ? (
+            <div className="mt-4 flex items-center justify-center gap-2 rounded-2xl border border-oak/10 bg-white/70 py-6 text-sm text-ink/70">
+              <div className="h-4 w-4 animate-spin rounded-full border-2 border-oak/25 border-t-oak" />
+              <span>기록을 불러오는 중입니다…</span>
+            </div>
+          ) : null}
 
-              return (
-                <Link
-                  key={`${box.key}-${item.id}`}
-                  href={`/collections/${box.key}/items/${encodeURIComponent(item.id)}`}
-                  className="flex items-start justify-between gap-3 rounded-2xl border border-white/70 bg-white/70 p-4 transition hover:-translate-y-1 hover:border-amber/30 hover:bg-white"
+          {!isLoading && box.items.length > 0 ? (
+            <>
+              <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {visibleItems.map((item) => {
+                  const showPreview = Boolean(item.imageUrl);
+
+                  return (
+                    <Link
+                      key={`${box.key}-${item.id}`}
+                      href={`/collections/${box.key}/items/${encodeURIComponent(item.id)}`}
+                      className="flex items-start justify-between gap-3 rounded-2xl border border-white/70 bg-white/70 p-4 transition hover:-translate-y-1 hover:border-amber/30 hover:bg-white"
+                    >
+                      <div className="min-w-0 flex-1">
+                        <p className="line-clamp-1 text-sm font-semibold text-ink">{item.title}</p>
+                        <div className="mt-2 space-y-1 text-xs leading-relaxed text-ink/70">
+                          {(item.displayFields || []).slice(0, 2).map((field) => (
+                            <p key={field.key} className="line-clamp-1">
+                              <span className="mr-1 text-ink/45">{field.label}</span>
+                              {field.value}
+                            </p>
+                          ))}
+                        </div>
+                      </div>
+                      {showPreview ? (
+                        <div className="ml-2 shrink-0 overflow-hidden rounded-xl border border-oak/10 bg-white/80 shadow-sm">
+                          <Image
+                            src={item.imageUrl}
+                            alt={`${item.title} 첫 첨부 사진`}
+                            width={48}
+                            height={48}
+                            quality={35}
+                            sizes="48px"
+                            className="h-12 w-12 object-cover sm:h-14 sm:w-14"
+                            priority={false}
+                            loading="lazy"
+                            unoptimized
+                          />
+                        </div>
+                      ) : null}
+                    </Link>
+                  );
+                })}
+              </div>
+
+              {hasMoreItems ? (
+                <button
+                  type="button"
+                  onClick={() => setVisibleCount((prev) => Math.min(prev + itemsPerRow, box.items.length))}
+                  className="mt-4 text-sm font-semibold text-oak/80 underline decoration-oak/40 underline-offset-2 transition hover:text-oak"
                 >
-                  <div className="min-w-0 flex-1">
-                    <p className="line-clamp-1 text-sm font-semibold text-ink">{item.title}</p>
-                    <div className="mt-2 space-y-1 text-xs leading-relaxed text-ink/70">
-                      {(item.displayFields || []).slice(0, 2).map((field) => (
-                        <p key={field.key} className="line-clamp-1">
-                          <span className="mr-1 text-ink/45">{field.label}</span>
-                          {field.value}
-                        </p>
-                      ))}
-                    </div>
-                  </div>
-                  {showPreview ? (
-                    <div className="ml-2 shrink-0 overflow-hidden rounded-xl border border-oak/10 bg-white/80 shadow-sm">
-                      <Image
-                        src={item.imageUrl}
-                        alt={`${item.title} 첫 첨부 사진`}
-                        width={48}
-                        height={48}
-                        quality={35}
-                        sizes="48px"
-                        className="h-12 w-12 object-cover sm:h-14 sm:w-14"
-                        priority={false}
-                        loading="lazy"
-                        unoptimized
-                      />
-                    </div>
-                  ) : null}
-                </Link>
-              );
-            })}
-          </div>
+                  더 보기
+                </button>
+              ) : null}
+            </>
+          ) : null}
 
-          {hasMoreItems ? (
-            <button
-              type="button"
-              onClick={() => setVisibleCount((prev) => Math.min(prev + itemsPerRow, box.items.length))}
-              className="mt-4 text-sm font-semibold text-oak/80 underline decoration-oak/40 underline-offset-2 transition hover:text-oak"
-            >
-              더 보기
-            </button>
+          {!isLoading && box.items.length === 0 ? (
+            <div className="mt-4 rounded-2xl border border-oak/10 bg-white/70 py-6 text-center text-sm text-ink/70">
+              아직 보여줄 기록이 없습니다.
+            </div>
           ) : null}
         </>
       ) : null}
