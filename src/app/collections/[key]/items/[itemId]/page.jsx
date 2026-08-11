@@ -69,8 +69,10 @@ export default async function ItemDetailPage({ params }) {
             <Image
               src={item.imageUrl}
               alt={item.title}
-              width={1200}
-              height={720}
+              width={640}
+              height={360}
+              quality={20}
+              sizes="(max-width: 768px) 100vw, 768px"
               className="h-72 w-full object-cover"
               unoptimized
             />
@@ -127,7 +129,7 @@ export default async function ItemDetailPage({ params }) {
                   if (block.type === "image") {
                     return (
                       <div key={`${block.type}-${index}`} className="overflow-hidden rounded-2xl border border-oak/10 bg-white/60">
-                        <Image src={block.url} alt={block.caption || item.title} width={1200} height={720} className="w-full object-cover" unoptimized />
+                        <Image src={block.url} alt={block.caption || item.title} width={640} height={360} quality={20} sizes="(max-width: 768px) 100vw, 768px" className="w-full object-cover" unoptimized />
                         {block.caption ? <p className="px-4 py-3 text-xs text-ink/55">{block.caption}</p> : null}
                       </div>
                     );

@@ -107,6 +107,25 @@ const getImageUrl = (cover) => {
   return "";
 };
 
+const normalizeImageUrl = (imageUrl) => {
+  if (!imageUrl) return "";
+
+  try {
+    const url = new URL(imageUrl);
+
+    if (url.hostname.includes("notion.so") || url.hostname.includes("prod-files.secure") || url.hostname.includes("s3.us-west-2.amazonaws.com")) {
+      const searchParams = url.searchParams;
+      searchParams.set("format", "webp");
+      searchParams.set("quality", "80");
+      return url.toString();
+    }
+  } catch (error) {
+    return imageUrl;
+  }
+
+  return imageUrl;
+};
+
 const getFileUrl = (fileItem) => {
   if (!fileItem) return "";
   if (fileItem.type === "external") return fileItem.external?.url || "";
@@ -239,7 +258,7 @@ const mapPageToCollectionItem = async (collection, page, options = {}) => {
     id: page.id,
     title,
     url: page.url,
-    imageUrl: await getFirstImageFromPage(page),
+    imageUrl: normalizeImageUrl(await getFirstImageFromPage(page)),
     displayFields,
     filterValues,
     searchText,

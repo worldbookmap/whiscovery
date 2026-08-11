@@ -4,6 +4,48 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+function PreviewImage({ src, alt }) {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  return (
+    <div className="ml-2 shrink-0 overflow-hidden rounded-xl border border-oak/10 bg-white/80 shadow-sm">
+      {!isLoaded ? (
+        <div className="relative flex h-12 w-12 items-center justify-center overflow-hidden bg-[linear-gradient(110deg,rgba(245,158,11,0.14)_0%,rgba(255,255,255,0.75)_45%,rgba(245,158,11,0.14)_90%)] bg-[length:200%_100%] animate-[shimmer_1.2s_linear_infinite] sm:h-14 sm:w-14">
+          <div className="h-4 w-4 rounded-full bg-oak/25" />
+        </div>
+      ) : null}
+      <Image
+        src={src}
+        alt={alt}
+        width={48}
+        height={48}
+        quality={20}
+        sizes="48px"
+        className={`h-12 w-12 object-cover transition-opacity duration-300 sm:h-14 sm:w-14 ${isLoaded ? "block opacity-100" : "hidden opacity-0"}`}
+        priority={false}
+        loading="lazy"
+        unoptimized
+        onLoad={() => setIsLoaded(true)}
+      />
+    </div>
+  );
+}
+
+function PreviewCardSkeleton() {
+  return (
+    <div className="flex items-start justify-between gap-3 rounded-2xl border border-white/70 bg-white/70 p-4">
+      <div className="min-w-0 flex-1">
+        <div className="h-4 w-24 rounded-full bg-[linear-gradient(110deg,rgba(180,83,9,0.16)_0%,rgba(255,247,237,0.95)_45%,rgba(180,83,9,0.16)_90%)] bg-[length:220%_100%] animate-[shimmer_1.4s_ease-in-out_infinite]" />
+        <div className="mt-2 space-y-2">
+          <div className="h-3 w-full rounded-full bg-[linear-gradient(110deg,rgba(245,158,11,0.12)_0%,rgba(255,250,240,0.95)_45%,rgba(245,158,11,0.12)_90%)] bg-[length:220%_100%] animate-[shimmer_1.4s_ease-in-out_infinite]" />
+          <div className="h-3 w-3/4 rounded-full bg-[linear-gradient(110deg,rgba(245,158,11,0.12)_0%,rgba(255,250,240,0.95)_45%,rgba(245,158,11,0.12)_90%)] bg-[length:220%_100%] animate-[shimmer_1.4s_ease-in-out_infinite]" />
+        </div>
+      </div>
+      <div className="ml-2 h-12 w-12 rounded-xl bg-[linear-gradient(110deg,rgba(180,83,9,0.16)_0%,rgba(255,247,237,0.95)_45%,rgba(180,83,9,0.16)_90%)] bg-[length:220%_100%] animate-[shimmer_1.4s_ease-in-out_infinite] sm:h-14 sm:w-14" />
+    </div>
+  );
+}
+
 const getItemsPerRow = () => {
   if (typeof window === "undefined") {
     return 1;
@@ -77,9 +119,10 @@ export default function CollectionPreviewSection({ box }) {
       {!box.errorMessage ? (
         <>
           {isLoading ? (
-            <div className="mt-4 flex items-center justify-center gap-2 rounded-2xl border border-oak/10 bg-white/70 py-6 text-sm text-ink/70">
-              <div className="h-4 w-4 animate-spin rounded-full border-2 border-oak/25 border-t-oak" />
-              <span>기록을 불러오는 중입니다…</span>
+            <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {Array.from({ length: 3 }).map((_, index) => (
+                <PreviewCardSkeleton key={`skeleton-${index}`} />
+              ))}
             </div>
           ) : null}
 
@@ -106,35 +149,24 @@ export default function CollectionPreviewSection({ box }) {
                           ))}
                         </div>
                       </div>
-                      {showPreview ? (
-                        <div className="ml-2 shrink-0 overflow-hidden rounded-xl border border-oak/10 bg-white/80 shadow-sm">
-                          <Image
-                            src={item.imageUrl}
-                            alt={`${item.title} 첫 첨부 사진`}
-                            width={48}
-                            height={48}
-                            quality={35}
-                            sizes="48px"
-                            className="h-12 w-12 object-cover sm:h-14 sm:w-14"
-                            priority={false}
-                            loading="lazy"
-                            unoptimized
-                          />
-                        </div>
-                      ) : null}
+                      {showPreview ? <PreviewImage src={item.imageUrl} alt={`${item.title} 첫 첨부 사진`} /> : null}
                     </Link>
                   );
                 })}
               </div>
 
               {hasMoreItems ? (
-                <button
-                  type="button"
-                  onClick={() => setVisibleCount((prev) => Math.min(prev + itemsPerRow, box.items.length))}
-                  className="mt-4 text-sm font-semibold text-oak/80 underline decoration-oak/40 underline-offset-2 transition hover:text-oak"
-                >
-                  더 보기
-                </button>
+                <div className="mt-5 flex justify-center">
+                  <button
+                    type="button"
+                    onClick={() => setVisibleCount((prev) => Math.min(prev + itemsPerRow, box.items.length))}
+                    className="group inline-flex items-center justify-center rounded-full border border-oak/20 bg-white/80 px-4 py-2 text-sm font-semibold text-oak/85 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-amber/35 hover:bg-white hover:text-oak active:translate-y-0"
+                  >
+                    <span className="mr-2 h-1.5 w-1.5 rounded-full bg-amber/70 transition group-hover:scale-125" />
+                    더 보기
+                    <span className="ml-2 h-1.5 w-1.5 rounded-full bg-amber/70 transition group-hover:scale-125" />
+                  </button>
+                </div>
               ) : null}
             </>
           ) : null}
