@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import HeroShell from "@/components/hero-shell";
@@ -25,7 +24,6 @@ export default async function ItemDetailPage({ params }) {
   const currentIndex = items.findIndex((entry) => entry.id === item.id);
   const previousItem = currentIndex > 0 ? items[currentIndex - 1] : null;
   const nextItem = currentIndex < items.length - 1 ? items[currentIndex + 1] : null;
-  const heroImageUrl = item.detailImageUrl || item.cardImageUrl || item.imageUrl;
 
   return (
     <main className="mx-auto flex min-h-[100svh] w-full max-w-6xl flex-col px-4 pb-16 pt-10 sm:px-8">
@@ -69,21 +67,6 @@ export default async function ItemDetailPage({ params }) {
         </div>
 
         <article className="overflow-hidden rounded-3xl border border-white/50 bg-white/70 shadow-soft">
-          {heroImageUrl ? (
-            <Image
-              src={heroImageUrl}
-              alt={item.title}
-              width={1200}
-              height={720}
-              sizes="(max-width: 768px) 100vw, 960px"
-              priority
-              className="h-72 w-full object-cover"
-              unoptimized
-            />
-          ) : (
-            <div className="flex h-72 w-full items-center justify-center bg-oak/10 text-sm text-oak/45">No image</div>
-          )}
-
           <div className="grid gap-6 p-6 md:p-8">
             <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
               {item.displayFields.map((field) => (

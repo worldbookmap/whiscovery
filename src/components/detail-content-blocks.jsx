@@ -129,7 +129,7 @@ export default function DetailContentBlocks({ contentBlocks = [], itemTitle = ""
 
       {lightboxImage ? (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 px-4 py-8"
+          className="fixed inset-0 z-50 overflow-y-auto bg-black/85 px-4 py-8"
           role="dialog"
           aria-modal="true"
           onClick={() => setLightboxImage(null)}
@@ -141,13 +141,13 @@ export default function DetailContentBlocks({ contentBlocks = [], itemTitle = ""
           >
             닫기
           </button>
-          <div className="max-h-full max-w-5xl overflow-auto" onClick={(event) => event.stopPropagation()}>
+          <div className="flex min-h-full items-center justify-center" onClick={(event) => event.stopPropagation()}>
             <Image
               src={lightboxImage.src}
               alt={lightboxImage.alt}
               width={1800}
               height={1200}
-              className="h-auto w-full rounded-xl object-contain"
+              className="h-auto max-h-[88vh] w-auto max-w-full rounded-xl object-contain"
               unoptimized
             />
           </div>
