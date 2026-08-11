@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -24,17 +23,14 @@ function PreviewImage({ src, alt }) {
           <div className="h-4 w-4 rounded-full bg-oak/25" />
         </div>
       ) : null}
-      <Image
+      <img
         src={src}
         alt={alt}
         width={48}
         height={48}
-        quality={20}
-        sizes="48px"
-        className={`h-full w-full object-cover transition-opacity duration-300 ${isLoaded ? "opacity-100" : "opacity-0"}`}
-        priority={false}
         loading="lazy"
-        unoptimized
+        decoding="async"
+        className={`h-full w-full object-cover transition-opacity duration-300 ${isLoaded ? "opacity-100" : "opacity-0"}`}
         onLoad={() => setStatus("loaded")}
         onError={() => setStatus("error")}
       />
