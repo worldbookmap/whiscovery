@@ -1,5 +1,3 @@
-import WhiskyMapSection from "@/components/whisky-map-section";
-
 export default function HomePage() {
   return (
     <>
@@ -130,7 +128,6 @@ export default function HomePage() {
           </a>
         </section>
 
-        <WhiskyMapSection />
       </main>
     </>
   );
