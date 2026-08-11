@@ -45,7 +45,8 @@ export default async function ItemDetailPage({ params }) {
             </Link>
           </div>
 
-          <div className="mt-5 flex flex-wrap gap-2">
+          <div className="-mx-1 mt-5 overflow-x-auto pb-1">
+            <div className="flex min-w-max gap-2 px-1 sm:min-w-0 sm:flex-wrap">
             {DATABASE_BOXES.map((entry) => {
               const active = entry.key === collection.key;
 
@@ -53,7 +54,7 @@ export default async function ItemDetailPage({ params }) {
                 <Link
                   key={entry.key}
                   href={`/collections/${entry.key}`}
-                  className={`rounded-full px-4 py-2 text-sm transition ${
+                  className={`shrink-0 whitespace-nowrap rounded-full px-3 py-2 text-xs transition sm:px-4 sm:text-sm ${
                     active
                       ? "bg-oak text-white"
                       : "border border-oak/20 bg-white/70 text-ink/75 hover:border-oak/35 hover:text-oak"
@@ -63,6 +64,7 @@ export default async function ItemDetailPage({ params }) {
                 </Link>
               );
             })}
+            </div>
           </div>
         </div>
 
