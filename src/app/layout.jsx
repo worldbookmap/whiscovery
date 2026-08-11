@@ -14,7 +14,12 @@ export default function RootLayout({ children }) {
         <link href="https://fonts.googleapis.com/css2?family=Grandiflora+One:wght@400&display=swap" rel="stylesheet" />
       </head>
       <body className="antialiased">
-        {children}
+        <div className="flex min-h-screen flex-col">
+          <div className="flex-1">{children}</div>
+          <footer className="px-4 pb-5 text-center text-xs text-ink/45 sm:px-8">
+            제작자: 정진욱
+          </footer>
+        </div>
       </body>
     </html>
   );
