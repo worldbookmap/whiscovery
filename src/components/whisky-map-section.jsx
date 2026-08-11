@@ -14,8 +14,13 @@ const normalizeText = (value) => {
     .trim();
 };
 
+const normalizeSearchText = (value) => {
+  return normalizeText(value).replace(/\s+/g, "");
+};
+
 const normalizeDistilleryLabel = (value) => {
   return normalizeText(value)
+    .replace(/^더\s+/g, "")
     .replace(/\bdistillery\b/g, "")
     .replace(/\bthe\b/g, "")
     .replace(/\bwhisky\b/g, "")
@@ -40,7 +45,7 @@ const buildPostHref = (collectionKey, itemId) => {
 
 const buildItemCorpus = (item) => {
   const values = [item.title, item.contentText, item.searchText, ...(item.displayFields || []).map((field) => field.value), ...(item.filterValues || [])];
-  return normalizeText(values.filter(Boolean).join(" "));
+  return normalizeSearchText(values.filter(Boolean).join(" "));
 };
 
 const buildLinkedPostEntries = (linkedSources) => {
@@ -288,7 +293,7 @@ export default function WhiskyMapSection({ linkedSources = [] }) {
   }, [selectedDistillery, showAllPins]);
 
   const suggestions = useMemo(() => {
-    const normalizedQuery = query.trim().toLowerCase();
+    const normalizedQuery = normalizeSearchText(query);
 
     if (!normalizedQuery) {
       return [];
@@ -296,8 +301,10 @@ export default function WhiskyMapSection({ linkedSources = [] }) {
 
     return locationList
       .filter((item) => {
-        const haystacks = [item.name, item.name_ko, ...(item.whiskeys || []), ...(item.whiskeys_ko || [])].filter(Boolean);
-        return haystacks.some((text) => text.toLowerCase().includes(normalizedQuery));
+        const haystacks = [item.name, item.name_ko, ...(item.whiskeys || []), ...(item.whiskeys_ko || [])]
+          .filter(Boolean)
+          .map((text) => normalizeSearchText(text));
+        return haystacks.some((text) => text.includes(normalizedQuery));
       })
       .slice(0, 8);
   }, [locationList, query]);
