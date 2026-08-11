@@ -110,11 +110,29 @@ const getImageUrl = (cover) => {
 const normalizeImageUrl = (imageUrl, options = {}) => {
   if (!imageUrl) return "";
 
-  const { width = 0, quality = 80 } = options;
+  const { width = 0, quality = 80, notionBlockId = "" } = options;
 
   try {
     const url = new URL(imageUrl);
     const hasSignedAwsQuery = Array.from(url.searchParams.keys()).some((key) => key.toLowerCase().startsWith("x-amz-"));
+
+    const pathname = url.pathname.toLowerCase();
+    const isHeicLike = pathname.endsWith(".heic") || pathname.endsWith(".heif");
+
+    if (hasSignedAwsQuery && notionBlockId && isHeicLike) {
+      const proxyUrl = new URL(`https://www.notion.so/image/${encodeURIComponent(imageUrl)}`);
+      proxyUrl.searchParams.set("table", "block");
+      proxyUrl.searchParams.set("id", notionBlockId);
+      proxyUrl.searchParams.set("cache", "v2");
+      proxyUrl.searchParams.set("format", "webp");
+      proxyUrl.searchParams.set("quality", String(quality));
+
+      if (width > 0) {
+        proxyUrl.searchParams.set("width", String(width));
+      }
+
+      return proxyUrl.toString();
+    }
 
     if (hasSignedAwsQuery) {
       return imageUrl;
@@ -225,6 +243,7 @@ const blockToContent = (block) => {
     case "image":
       return {
         type: "image",
+        blockId: block.id,
         url: block.image?.external?.url || block.image?.file?.url || "",
         caption: richTextToText(block.image?.caption || []),
       };
@@ -483,14 +502,16 @@ export const getWhiskyItemDetail = async (databaseId, pageId) => {
       return block;
     }
 
-    const desktopUrl = normalizeImageUrl(block.url, { width: 960, quality: 48 });
-    const mobileUrl = normalizeImageUrl(block.url, { width: 560, quality: 40 });
+    const desktopUrl = normalizeImageUrl(block.url, { width: 960, quality: 48, notionBlockId: block.blockId });
+    const mobileUrl = normalizeImageUrl(block.url, { width: 560, quality: 40, notionBlockId: block.blockId });
+    const enlargedUrl = normalizeImageUrl(block.url, { width: 1600, quality: 68, notionBlockId: block.blockId });
 
     return {
       ...block,
       originalUrl: block.url,
       mobileUrl,
       desktopUrl,
+      enlargedUrl,
       url: desktopUrl,
     };
   });

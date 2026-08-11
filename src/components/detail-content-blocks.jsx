@@ -103,7 +103,7 @@ export default function DetailContentBlocks({ contentBlocks = [], itemTitle = ""
               <div key={`${block.type}-${index}`} className="overflow-hidden rounded-2xl border border-oak/10 bg-white/60">
                 <button
                   type="button"
-                  onClick={() => setLightboxImage({ src: block.originalUrl || block.displayUrl, alt: caption })}
+                  onClick={() => setLightboxImage({ src: block.enlargedUrl || block.originalUrl || block.displayUrl, alt: caption })}
                   className="group block w-full text-left"
                 >
                   <Image
