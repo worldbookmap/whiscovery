@@ -610,5 +610,17 @@
     "longitude": -85.76690,
     "name": "Peerless Distillery",
     "name_ko": "피어리스 증류소"
+  },
+  {
+    "latitude": 37.64,
+    "longitude": 127.35,
+    "name": "Ki One Whisky Distillery",
+    "name_ko": "기원 위스키"
+  },
+  {
+    "latitude": 37.6925437,
+    "longitude": 126.5763827,
+    "name": "Kimchangsoo Whisky Distillery",
+    "name_ko": "김창수 위스키 증류소"
   }
 ]
