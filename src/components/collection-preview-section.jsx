@@ -34,7 +34,12 @@ export default function CollectionPreviewSection({ box }) {
     const updateLayout = () => {
       const nextItemsPerRow = getItemsPerRow();
       setItemsPerRow(nextItemsPerRow);
-      setVisibleCount((prev) => (prev === 0 ? Math.min(nextItemsPerRow, box.items.length) : Math.min(prev, box.items.length)));
+      setVisibleCount((prev) => {
+        if (prev === 0) {
+          return Math.min(nextItemsPerRow * 2, box.items.length);
+        }
+        return Math.min(prev, box.items.length);
+      });
     };
 
     updateLayout();
