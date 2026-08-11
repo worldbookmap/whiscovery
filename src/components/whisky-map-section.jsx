@@ -192,6 +192,7 @@ export default function WhiskyMapSection({ linkedSources = [] }) {
     }
 
     const L = window.L;
+    const map = mapInstanceRef.current;
     markersRef.current.forEach((marker) => {
       marker.remove();
     });
