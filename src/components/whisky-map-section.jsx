@@ -109,6 +109,7 @@ const makePopupHtml = (item) => {
 export default function WhiskyMapSection({ linkedSources = [] }) {
   const [query, setQuery] = useState("");
   const [selectedDistillery, setSelectedDistillery] = useState(null);
+  const [showAllPins, setShowAllPins] = useState(false);
   const [leafletReady, setLeafletReady] = useState(false);
   const [leafletError, setLeafletError] = useState(false);
   const mapRef = useRef(null);
@@ -126,6 +127,13 @@ export default function WhiskyMapSection({ linkedSources = [] }) {
   const locationList = useMemo(() => {
     return matchDistilleryPosts(baseLocationList, linkedSources);
   }, [baseLocationList, linkedSources]);
+
+  const visibleLocationList = useMemo(() => {
+    if (showAllPins) {
+      return locationList;
+    }
+    return locationList.filter((item) => (item.linkedPosts?.length || 0) > 0);
+  }, [locationList, showAllPins]);
 
   useEffect(() => {
     if (typeof window === "undefined") {
@@ -175,8 +183,21 @@ export default function WhiskyMapSection({ linkedSources = [] }) {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
 
+    mapInstanceRef.current = map;
+  }, [leafletReady]);
+
+  useEffect(() => {
+    if (!leafletReady || !window.L || !mapInstanceRef.current) {
+      return;
+    }
+
+    const L = window.L;
+    markersRef.current.forEach((marker) => {
+      marker.remove();
+    });
+
     const markerLayer = [];
-    const prioritizedLocations = [...locationList].sort((left, right) => {
+    const prioritizedLocations = [...visibleLocationList].sort((left, right) => {
       const rightScore = right.linkedPosts?.length || 0;
       const leftScore = left.linkedPosts?.length || 0;
       if (rightScore !== leftScore) {
@@ -193,8 +214,8 @@ export default function WhiskyMapSection({ linkedSources = [] }) {
       const linkedCount = item.linkedPosts?.length || 0;
       const hasLinkedPosts = linkedCount > 0;
       const pinSize = hasLinkedPosts ? 14 : 10;
-      const pinColor = hasLinkedPosts ? "#b45309" : "#d08a3c";
-      const pinShadow = hasLinkedPosts ? "0 3px 10px rgba(180,83,9,0.42)" : "0 2px 8px rgba(0,0,0,0.2)";
+      const pinColor = hasLinkedPosts ? "#dc2626" : "#2563eb";
+      const pinShadow = hasLinkedPosts ? "0 3px 10px rgba(220,38,38,0.4)" : "0 2px 8px rgba(37,99,235,0.32)";
 
       const marker = L.marker([item.latitude, item.longitude], {
         zIndexOffset: hasLinkedPosts ? 300 + linkedCount : 0,
@@ -214,8 +235,18 @@ export default function WhiskyMapSection({ linkedSources = [] }) {
     });
 
     markersRef.current = markerLayer;
-    mapInstanceRef.current = map;
-  }, [leafletReady, locationList]);
+  }, [leafletReady, visibleLocationList]);
+
+  useEffect(() => {
+    if (!selectedDistillery) {
+      return;
+    }
+
+    const isVisible = visibleLocationList.some((item) => item.name === selectedDistillery.name);
+    if (!isVisible) {
+      setSelectedDistillery(null);
+    }
+  }, [selectedDistillery, visibleLocationList]);
 
   useEffect(() => {
     if (!mapInstanceRef.current || !markersRef.current.length) {
@@ -266,13 +297,13 @@ export default function WhiskyMapSection({ linkedSources = [] }) {
       return [];
     }
 
-    return locationList
+    return visibleLocationList
       .filter((item) => {
         const haystacks = [item.name, item.name_ko].filter(Boolean);
         return haystacks.some((text) => text.toLowerCase().includes(normalizedQuery));
       })
       .slice(0, 8);
-  }, [locationList, query]);
+  }, [visibleLocationList, query]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -296,6 +327,35 @@ export default function WhiskyMapSection({ linkedSources = [] }) {
           Distillery Map
         </p>
         <h2 className="text-2xl font-semibold text-ink">위스키 증류소 지도</h2>
+        <p className="mt-2 text-xs text-ink/65">빨강: 연결 게시물 있음 · 파랑: 연결 게시물 없음</p>
+      </div>
+
+      <div className="mb-4 flex flex-wrap items-center gap-2">
+        <button
+          type="button"
+          onClick={() => setShowAllPins(false)}
+          className={`rounded-full px-3 py-1.5 text-xs font-semibold transition ${
+            !showAllPins
+              ? "bg-oak text-white"
+              : "border border-oak/20 bg-white/70 text-ink/70 hover:border-oak/35 hover:text-oak"
+          }`}
+        >
+          연결된 핀만
+        </button>
+        <button
+          type="button"
+          onClick={() => setShowAllPins(true)}
+          className={`rounded-full px-3 py-1.5 text-xs font-semibold transition ${
+            showAllPins
+              ? "bg-oak text-white"
+              : "border border-oak/20 bg-white/70 text-ink/70 hover:border-oak/35 hover:text-oak"
+          }`}
+        >
+          전체 보기
+        </button>
+        <span className="text-xs text-ink/60">
+          표시 중: {visibleLocationList.length} / 전체 {locationList.length}
+        </span>
       </div>
 
       <form onSubmit={handleSubmit} className="mb-4">
@@ -361,7 +421,7 @@ export default function WhiskyMapSection({ linkedSources = [] }) {
         </div>
       ) : (
         <div className="mt-4 rounded-2xl border border-oak/10 bg-white/70 p-3 text-sm text-ink/70">
-          검색 결과를 선택하면 지도에서 해당 위치로 이동합니다. 초기 화면에서는 연결된 게시물이 있는 증류소 핀이 우선 강조됩니다.
+          검색 결과를 선택하면 지도에서 해당 위치로 이동합니다.
         </div>
       )}
     </section>
