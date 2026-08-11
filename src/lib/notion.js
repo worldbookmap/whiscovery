@@ -192,7 +192,19 @@ const getPageContentBlocks = async (pageId) => {
   return blocks.map(blockToContent).filter((block) => block && (block.text || block.url));
 };
 
-const mapPageToCollectionItem = async (collection, page) => {
+const getSearchableTextFromBlocks = (blocks) => {
+  if (!Array.isArray(blocks) || blocks.length === 0) {
+    return "";
+  }
+
+  return blocks
+    .flatMap((block) => [block.text, block.caption].filter(Boolean))
+    .join(" ")
+    .trim();
+};
+
+const mapPageToCollectionItem = async (collection, page, options = {}) => {
+  const { includeContentText = false } = options;
   const properties = page.properties || {};
   const titleProperty = properties[collection.titleProperty] || pickFirstPropertyByType(properties, "title");
   const title = formatValue(parsePropertyValue(titleProperty)) || "Untitled";
@@ -211,7 +223,17 @@ const mapPageToCollectionItem = async (collection, page) => {
 
   const filterRawValue = parsePropertyValue(properties[collection.filterProperty]);
   const filterValues = Array.isArray(filterRawValue) ? filterRawValue : filterRawValue ? [filterRawValue] : [];
-  const searchText = [title, ...displayFields.map((field) => field.value), ...filterValues].join(" ").toLowerCase();
+  let contentText = "";
+  if (includeContentText) {
+    try {
+      const contentBlocks = await getPageContentBlocks(page.id);
+      contentText = getSearchableTextFromBlocks(contentBlocks);
+    } catch (error) {
+      contentText = "";
+    }
+  }
+
+  const searchText = [title, ...displayFields.map((field) => field.value), ...filterValues, contentText].join(" ").toLowerCase();
 
   return {
     id: page.id,
@@ -221,6 +243,7 @@ const mapPageToCollectionItem = async (collection, page) => {
     displayFields,
     filterValues,
     searchText,
+    contentText,
   };
 };
 
@@ -241,7 +264,8 @@ export const getConfiguredDatabaseIds = () => {
   return process.env.NOTION_DATABASE_ID ? [process.env.NOTION_DATABASE_ID] : [];
 };
 
-export const getWhiskyListByDatabaseId = async (databaseId) => {
+export const getWhiskyListByDatabaseId = async (databaseId, options = {}) => {
+  const { includeContentText = false } = options;
   if (!process.env.NOTION_TOKEN) {
     throw new Error("NOTION_TOKEN 환경 변수가 비어 있습니다.");
   }
@@ -251,7 +275,7 @@ export const getWhiskyListByDatabaseId = async (databaseId) => {
     throw new Error("유효한 NOTION_DATABASE_ID가 필요합니다.");
   }
 
-  const cacheKey = `list:${normalizedDatabaseId}`;
+  const cacheKey = `list:${normalizedDatabaseId}:content:${includeContentText ? "1" : "0"}`;
   const cachedItems = getCachedValue(listCache, cacheKey);
   if (cachedItems) {
     return cachedItems;
@@ -270,7 +294,7 @@ export const getWhiskyListByDatabaseId = async (databaseId) => {
     page_size: 100,
   });
 
-  const items = await Promise.all(response.results.map((page) => mapPageToCollectionItem(collection, page)));
+  const items = await Promise.all(response.results.map((page) => mapPageToCollectionItem(collection, page, { includeContentText })));
   setCachedValue(listCache, cacheKey, items);
 
   return items;

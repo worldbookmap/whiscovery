@@ -9,7 +9,7 @@ export default async function ArchivePage() {
   const boxResults = await Promise.all(
     DATABASE_BOXES.map(async (database) => {
       try {
-        const items = await getWhiskyListByDatabaseId(database.id);
+        const items = await getWhiskyListByDatabaseId(database.id, { includeContentText: true });
         return {
           ...database,
           items,
@@ -24,14 +24,18 @@ export default async function ArchivePage() {
       }
     })
   );
-  const dailyWhiskyBox = boxResults.find((box) => box.key === "db-4");
+  const mapLinkedSources = boxResults.map((box) => ({
+    collectionKey: box.key,
+    collectionTitle: box.title,
+    items: box.items,
+  }));
 
   return (
     <main className="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-4 pb-16 pt-10 sm:px-8">
       <HeroShell />
 
       <div className="mt-8">
-        <WhiskyMapSection linkedItems={dailyWhiskyBox?.items || []} linkedCollectionKey="db-4" />
+        <WhiskyMapSection linkedSources={mapLinkedSources} />
       </div>
 
       <section className="mt-8 space-y-8">

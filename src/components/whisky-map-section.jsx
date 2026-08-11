@@ -39,17 +39,28 @@ const buildPostHref = (collectionKey, itemId) => {
 };
 
 const buildItemCorpus = (item) => {
-  const values = [item.title, ...(item.displayFields || []).map((field) => field.value)];
+  const values = [item.title, item.contentText, item.searchText, ...(item.displayFields || []).map((field) => field.value), ...(item.filterValues || [])];
   return normalizeText(values.filter(Boolean).join(" "));
 };
 
-const matchDistilleryPosts = (locations, sourceItems, collectionKey) => {
-  const items = (sourceItems || []).map((item) => ({
-    id: item.id,
-    title: item.title,
-    href: buildPostHref(collectionKey, item.id),
-    corpus: buildItemCorpus(item),
-  }));
+const buildLinkedPostEntries = (linkedSources) => {
+  return (linkedSources || []).flatMap((source) => {
+    const collectionKey = source.collectionKey;
+    const collectionTitle = source.collectionTitle;
+    return (source.items || []).map((item) => ({
+      id: item.id,
+      title: item.title,
+      imageUrl: item.imageUrl || "",
+      collectionKey,
+      collectionTitle,
+      href: buildPostHref(collectionKey, item.id),
+      corpus: buildItemCorpus(item),
+    }));
+  });
+};
+
+const matchDistilleryPosts = (locations, linkedSources) => {
+  const items = buildLinkedPostEntries(linkedSources);
 
   return locations.map((location) => {
     const koKey = normalizeDistilleryLabel(location.name_ko);
@@ -66,26 +77,36 @@ const matchDistilleryPosts = (locations, sourceItems, collectionKey) => {
 };
 
 const makePopupHtml = (item) => {
-  const heading = `<strong>${escapeHtml(item.name_ko || item.name)}</strong><br />${escapeHtml(item.name)}`;
+  const heading = `<strong style="font-size:14px;">${escapeHtml(item.name_ko || item.name)}</strong><br /><span style="font-size:12px; color:#6b7280;">${escapeHtml(item.name)}</span>`;
 
   if (!item.linkedPosts?.length) {
     return heading;
   }
 
   const previewItems = item.linkedPosts.slice(0, 3);
-  const links = previewItems
+  const cards = previewItems
     .map(
-      (post) =>
-        `<a href="${escapeHtml(post.href)}" style="display:block; margin-top:4px; color:#8a5a24; text-decoration:underline;">${escapeHtml(post.title)}</a>`
+      (post) => `
+        <a href="${escapeHtml(post.href)}" style="display:flex; gap:8px; align-items:center; margin-top:8px; padding:7px; border-radius:10px; background:rgba(255,255,255,0.92); border:1px solid rgba(138,90,36,0.16); text-decoration:none;">
+          ${
+            post.imageUrl
+              ? `<img src="${escapeHtml(post.imageUrl)}" alt="" style="width:34px; height:34px; border-radius:8px; object-fit:cover; flex:0 0 auto;" />`
+              : `<div style="width:34px; height:34px; border-radius:8px; background:rgba(138,90,36,0.14);"></div>`
+          }
+          <div style="min-width:0;">
+            <div style="font-size:10px; color:#7c5a2d; font-weight:700; letter-spacing:0.06em; text-transform:uppercase;">${escapeHtml(post.collectionTitle)}</div>
+            <div style="font-size:12px; color:#1f2937; font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${escapeHtml(post.title)}</div>
+          </div>
+        </a>`
     )
     .join("");
   const remainder = item.linkedPosts.length - previewItems.length;
   const extra = remainder > 0 ? `<div style="margin-top:4px; font-size:12px; color:#6b7280;">외 ${remainder}개 기록</div>` : "";
 
-  return `${heading}<div style="margin-top:8px; padding-top:8px; border-top:1px solid rgba(17,24,39,0.12); font-size:13px;"><div style="font-weight:600; margin-bottom:2px;">연결된 게시물</div>${links}${extra}</div>`;
+  return `${heading}<div style="margin-top:8px; padding-top:8px; border-top:1px solid rgba(17,24,39,0.12); font-size:13px;"><div style="font-weight:700; margin-bottom:2px; color:#7c5a2d;">연결된 게시물</div>${cards}${extra}</div>`;
 };
 
-export default function WhiskyMapSection({ linkedItems = [], linkedCollectionKey = "db-4" }) {
+export default function WhiskyMapSection({ linkedSources = [] }) {
   const [query, setQuery] = useState("");
   const [selectedDistillery, setSelectedDistillery] = useState(null);
   const [leafletReady, setLeafletReady] = useState(false);
@@ -103,8 +124,8 @@ export default function WhiskyMapSection({ linkedItems = [], linkedCollectionKey
   }, []);
 
   const locationList = useMemo(() => {
-    return matchDistilleryPosts(baseLocationList, linkedItems, linkedCollectionKey);
-  }, [baseLocationList, linkedCollectionKey, linkedItems]);
+    return matchDistilleryPosts(baseLocationList, linkedSources);
+  }, [baseLocationList, linkedSources]);
 
   useEffect(() => {
     if (typeof window === "undefined") {
@@ -309,11 +330,12 @@ export default function WhiskyMapSection({ linkedItems = [], linkedCollectionKey
         <div className="mt-4 rounded-2xl border border-amber/20 bg-amber/10 p-3 text-sm text-ink">
           선택된 증류소: <span className="font-semibold">{selectedDistillery.name_ko}</span> ({selectedDistillery.name})
           {selectedDistillery.linkedPosts?.length ? (
-            <div className="mt-3 space-y-1">
+            <div className="mt-3 space-y-2">
               <p className="text-xs font-semibold uppercase tracking-[0.12em] text-oak/80">연결된 게시물</p>
               {selectedDistillery.linkedPosts.slice(0, 6).map((post) => (
-                <div key={post.id}>
-                  <Link href={post.href} className="text-oak underline decoration-oak/50 underline-offset-2 hover:text-oak/80">
+                <div key={`${post.collectionKey}-${post.id}`} className="rounded-xl border border-oak/10 bg-white/70 p-2.5">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-oak/70">{post.collectionTitle}</p>
+                  <Link href={post.href} className="mt-1 block text-oak underline decoration-oak/50 underline-offset-2 hover:text-oak/80">
                     {post.title}
                   </Link>
                 </div>
