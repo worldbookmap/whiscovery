@@ -241,17 +241,6 @@ export default function WhiskyMapSection({ linkedSources = [] }) {
   }, [leafletReady, visibleLocationList]);
 
   useEffect(() => {
-    if (!selectedDistillery) {
-      return;
-    }
-
-    const isVisible = visibleLocationList.some((item) => item.name === selectedDistillery.name);
-    if (!isVisible) {
-      setSelectedDistillery(null);
-    }
-  }, [selectedDistillery, visibleLocationList]);
-
-  useEffect(() => {
     if (!mapInstanceRef.current || !markersRef.current.length) {
       return;
     }
@@ -283,6 +272,9 @@ export default function WhiskyMapSection({ linkedSources = [] }) {
     });
 
     if (!targetMarker) {
+      if (!showAllPins) {
+        setShowAllPins(true);
+      }
       return;
     }
 
@@ -291,7 +283,7 @@ export default function WhiskyMapSection({ linkedSources = [] }) {
       duration: 1.2,
     });
     targetMarker.openPopup();
-  }, [selectedDistillery]);
+  }, [selectedDistillery, showAllPins]);
 
   const suggestions = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
@@ -300,17 +292,20 @@ export default function WhiskyMapSection({ linkedSources = [] }) {
       return [];
     }
 
-    return visibleLocationList
+    return locationList
       .filter((item) => {
         const haystacks = [item.name, item.name_ko, ...(item.whiskeys || [])].filter(Boolean);
         return haystacks.some((text) => text.toLowerCase().includes(normalizedQuery));
       })
       .slice(0, 8);
-  }, [visibleLocationList, query]);
+  }, [locationList, query]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const firstMatch = suggestions[0] ?? null;
+    if (firstMatch && !showAllPins && (firstMatch.linkedPosts?.length || 0) === 0) {
+      setShowAllPins(true);
+    }
     setSelectedDistillery(firstMatch);
   };
 
@@ -379,6 +374,9 @@ export default function WhiskyMapSection({ linkedSources = [] }) {
                 type="button"
                 onClick={() => {
                   setQuery(`${item.name_ko} · ${item.name}`);
+                  if (!showAllPins && (item.linkedPosts?.length || 0) === 0) {
+                    setShowAllPins(true);
+                  }
                   setSelectedDistillery(item);
                 }}
                 className="flex w-full items-center justify-between px-4 py-3 text-left text-sm text-ink transition hover:bg-amber/10"
