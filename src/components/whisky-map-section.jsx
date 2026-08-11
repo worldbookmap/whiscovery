@@ -328,7 +328,7 @@ export default function WhiskyMapSection({ linkedSources = [] }) {
           Distillery Map
         </p>
         <h2 className="text-2xl font-semibold text-ink">위스키 증류소 지도</h2>
-        <p className="mt-2 text-xs text-ink/65">빨강: 연결 게시물 있음 · 파랑: 연결 게시물 없음</p>
+        <p className="mt-2 text-xs text-ink/65">오류가 있을 수 있습니다</p>
       </div>
 
       <div className="mb-4 flex flex-wrap items-center gap-2">
