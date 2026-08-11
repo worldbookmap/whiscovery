@@ -176,17 +176,33 @@ export default function WhiskyMapSection({ linkedSources = [] }) {
     }).addTo(map);
 
     const markerLayer = [];
-    locationList.forEach((item) => {
+    const prioritizedLocations = [...locationList].sort((left, right) => {
+      const rightScore = right.linkedPosts?.length || 0;
+      const leftScore = left.linkedPosts?.length || 0;
+      if (rightScore !== leftScore) {
+        return rightScore - leftScore;
+      }
+      return String(left.name_ko || left.name).localeCompare(String(right.name_ko || right.name), "ko");
+    });
+
+    prioritizedLocations.forEach((item) => {
       if (!Number.isFinite(item.latitude) || !Number.isFinite(item.longitude)) {
         return;
       }
 
+      const linkedCount = item.linkedPosts?.length || 0;
+      const hasLinkedPosts = linkedCount > 0;
+      const pinSize = hasLinkedPosts ? 14 : 10;
+      const pinColor = hasLinkedPosts ? "#b45309" : "#d08a3c";
+      const pinShadow = hasLinkedPosts ? "0 3px 10px rgba(180,83,9,0.42)" : "0 2px 8px rgba(0,0,0,0.2)";
+
       const marker = L.marker([item.latitude, item.longitude], {
+        zIndexOffset: hasLinkedPosts ? 300 + linkedCount : 0,
         icon: L.divIcon({
           className: "distillery-marker",
-          html: `<div style="width: 10px; height: 10px; border-radius: 999px; background: #d08a3c; border: 2px solid #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.2);"></div>`,
-          iconSize: [12, 12],
-          iconAnchor: [6, 6],
+          html: `<div style="width:${pinSize}px; height:${pinSize}px; border-radius:999px; background:${pinColor}; border:2px solid #fff; box-shadow:${pinShadow};"></div>`,
+          iconSize: [pinSize + 2, pinSize + 2],
+          iconAnchor: [Math.round((pinSize + 2) / 2), Math.round((pinSize + 2) / 2)],
         }),
       })
         .addTo(map)
@@ -345,7 +361,7 @@ export default function WhiskyMapSection({ linkedSources = [] }) {
         </div>
       ) : (
         <div className="mt-4 rounded-2xl border border-oak/10 bg-white/70 p-3 text-sm text-ink/70">
-          검색 결과를 선택하면 지도에서 해당 위치로 이동합니다.
+          검색 결과를 선택하면 지도에서 해당 위치로 이동합니다. 초기 화면에서는 연결된 게시물이 있는 증류소 핀이 우선 강조됩니다.
         </div>
       )}
     </section>
