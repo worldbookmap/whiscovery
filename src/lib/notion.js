@@ -346,12 +346,18 @@ const mapPageToCollectionItem = async (collection, page, options = {}) => {
   const searchText = [title, ...displayFields.map((field) => field.value), ...filterValues, contentText].join(" ").toLowerCase();
 
   const firstImageUrl = await getFirstImageFromPage(page);
+  const previewImageUrl = normalizeImageUrl(firstImageUrl, { width: 128, quality: 45 });
+  const cardImageUrl = normalizeImageUrl(firstImageUrl, { width: 360, quality: 60 });
+  const detailImageUrl = normalizeImageUrl(firstImageUrl, { width: 1280, quality: 70 });
 
   return {
     id: page.id,
     title,
     url: page.url,
-    imageUrl: normalizeImageUrl(firstImageUrl, { width: 240, quality: 70 }),
+    imageUrl: cardImageUrl,
+    previewImageUrl,
+    cardImageUrl,
+    detailImageUrl,
     displayFields,
     filterValues,
     searchText,
@@ -472,7 +478,16 @@ export const getWhiskyItemDetail = async (databaseId, pageId) => {
     return null;
   }
 
-  const contentBlocks = await getPageContentBlocks(pageId);
+  const contentBlocks = (await getPageContentBlocks(pageId)).map((block) => {
+    if (block.type !== "image") {
+      return block;
+    }
+
+    return {
+      ...block,
+      url: normalizeImageUrl(block.url, { width: 1280, quality: 62 }),
+    };
+  });
   const detailItem = {
     ...item,
     contentBlocks,

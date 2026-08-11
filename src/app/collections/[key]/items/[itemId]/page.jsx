@@ -22,6 +22,7 @@ export default async function ItemDetailPage({ params }) {
   const currentIndex = items.findIndex((entry) => entry.id === item.id);
   const previousItem = currentIndex > 0 ? items[currentIndex - 1] : null;
   const nextItem = currentIndex < items.length - 1 ? items[currentIndex + 1] : null;
+  const heroImageUrl = item.detailImageUrl || item.cardImageUrl || item.imageUrl;
 
   return (
     <main className="mx-auto flex min-h-[100svh] w-full max-w-6xl flex-col px-4 pb-16 pt-10 sm:px-8">
@@ -65,12 +66,14 @@ export default async function ItemDetailPage({ params }) {
         </div>
 
         <article className="overflow-hidden rounded-3xl border border-white/50 bg-white/70 shadow-soft">
-          {item.imageUrl ? (
+          {heroImageUrl ? (
             <Image
-              src={item.imageUrl}
+              src={heroImageUrl}
               alt={item.title}
               width={1200}
               height={720}
+              sizes="(max-width: 768px) 100vw, 960px"
+              priority
               className="h-72 w-full object-cover"
               unoptimized
             />
@@ -127,7 +130,16 @@ export default async function ItemDetailPage({ params }) {
                   if (block.type === "image") {
                     return (
                       <div key={`${block.type}-${index}`} className="overflow-hidden rounded-2xl border border-oak/10 bg-white/60">
-                        <Image src={block.url} alt={block.caption || item.title} width={1200} height={720} className="w-full object-cover" unoptimized />
+                        <Image
+                          src={block.url}
+                          alt={block.caption || item.title}
+                          width={1200}
+                          height={720}
+                          sizes="(max-width: 768px) 100vw, 900px"
+                          loading="lazy"
+                          className="w-full object-cover"
+                          unoptimized
+                        />
                         {block.caption ? <p className="px-4 py-3 text-xs text-ink/55">{block.caption}</p> : null}
                       </div>
                     );

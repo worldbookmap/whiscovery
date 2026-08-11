@@ -87,7 +87,8 @@ export default function CollectionPreviewSection({ box }) {
             <>
               <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {visibleItems.map((item) => {
-                  const showPreview = Boolean(item.imageUrl);
+                  const previewImageUrl = item.previewImageUrl || item.imageUrl;
+                  const showPreview = Boolean(previewImageUrl);
 
                   return (
                     <Link
@@ -109,7 +110,7 @@ export default function CollectionPreviewSection({ box }) {
                       {showPreview ? (
                         <div className="ml-2 shrink-0 overflow-hidden rounded-xl border border-oak/10 bg-white/80 shadow-sm">
                           <Image
-                            src={item.imageUrl}
+                            src={previewImageUrl}
                             alt={`${item.title} 첫 첨부 사진`}
                             width={56}
                             height={56}

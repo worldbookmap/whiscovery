@@ -55,7 +55,7 @@ const buildLinkedPostEntries = (linkedSources) => {
     return (source.items || []).map((item) => ({
       id: item.id,
       title: item.title,
-      imageUrl: item.imageUrl || "",
+      imageUrl: item.previewImageUrl || item.imageUrl || "",
       collectionKey,
       collectionTitle,
       href: buildPostHref(collectionKey, item.id),
