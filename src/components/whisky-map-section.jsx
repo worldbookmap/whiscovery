@@ -65,7 +65,8 @@ const matchDistilleryPosts = (locations, linkedSources) => {
   return locations.map((location) => {
     const koKey = normalizeDistilleryLabel(location.name_ko);
     const enKey = normalizeDistilleryLabel(location.name);
-    const keys = [koKey, enKey].filter(Boolean);
+    const whiskyKeys = (location.whiskeys || []).map((name) => normalizeText(name)).filter(Boolean);
+    const keys = Array.from(new Set([koKey, enKey, ...whiskyKeys].filter(Boolean)));
 
     const linkedPosts = items.filter((item) => keys.some((key) => key && item.corpus.includes(key)));
 
@@ -121,6 +122,7 @@ export default function WhiskyMapSection({ linkedSources = [] }) {
       ...item,
       latitude: Number(item.latitude ?? item.lat ?? 0),
       longitude: Number(item.longitude ?? item.lng ?? 0),
+      whiskeys: Array.isArray(item.whiskeys) ? item.whiskeys : Array.isArray(item["대표위스키"]) ? item["대표위스키"] : [],
     }));
   }, []);
 
@@ -300,7 +302,7 @@ export default function WhiskyMapSection({ linkedSources = [] }) {
 
     return visibleLocationList
       .filter((item) => {
-        const haystacks = [item.name, item.name_ko].filter(Boolean);
+        const haystacks = [item.name, item.name_ko, ...(item.whiskeys || [])].filter(Boolean);
         return haystacks.some((text) => text.toLowerCase().includes(normalizedQuery));
       })
       .slice(0, 8);
