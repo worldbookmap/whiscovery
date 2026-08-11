@@ -119,7 +119,7 @@ export default function HomePage() {
         }
       `}</style>
 
-      <main className="flex w-full max-w-6xl flex-col items-center gap-6">
+      <main className="flex min-h-[70vh] w-full max-w-6xl flex-col items-center justify-center gap-6">
         <section className="landing-main">
           <div className="landing-eyebrow">Whiscovery CS</div>
           <h1 className="landing-title">위스키를 아는 것은 하나의 역사를 읽는 것이고, 위스키를 마시는 것은 기분이 좋은 것이다.</h1>
