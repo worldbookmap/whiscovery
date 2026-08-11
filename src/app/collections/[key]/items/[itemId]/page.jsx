@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import HeroShell from "@/components/hero-shell";
+import DetailContentBlocks from "@/components/detail-content-blocks";
 import { DATABASE_BOXES, getCollectionByKey } from "@/lib/collections";
 import { getWhiskyItemDetail, getWhiskyListByDatabaseId } from "@/lib/notion";
 
@@ -92,62 +93,7 @@ export default async function ItemDetailPage({ params }) {
             </div>
             <div className="rounded-2xl border border-oak/10 bg-white/75 p-5">
               <p className="text-xs uppercase tracking-[0.2em] text-ink/45">본문</p>
-              <div className="mt-3 space-y-4 text-sm leading-7 text-ink/80">
-                {item.contentBlocks.length === 0 ? <p>표시할 본문이 없습니다.</p> : null}
-                {item.contentBlocks.map((block, index) => {
-                  if (block.type === "heading") {
-                    return (
-                      <h3 key={`${block.type}-${index}`} className="hero-title text-xl font-semibold text-ink">
-                        {block.text}
-                      </h3>
-                    );
-                  }
-
-                  if (block.type === "bullet") {
-                    return (
-                      <p key={`${block.type}-${index}`} className="pl-4 before:mr-2 before:content-['•']">
-                        {block.text}
-                      </p>
-                    );
-                  }
-
-                  if (block.type === "number") {
-                    return (
-                      <p key={`${block.type}-${index}`}>
-                        {index + 1}. {block.text}
-                      </p>
-                    );
-                  }
-
-                  if (block.type === "quote" || block.type === "callout") {
-                    return (
-                      <blockquote key={`${block.type}-${index}`} className="rounded-2xl border border-oak/10 bg-oak/5 px-4 py-3 text-ink/70">
-                        {block.text}
-                      </blockquote>
-                    );
-                  }
-
-                  if (block.type === "image") {
-                    return (
-                      <div key={`${block.type}-${index}`} className="overflow-hidden rounded-2xl border border-oak/10 bg-white/60">
-                        <Image
-                          src={block.url}
-                          alt={block.caption || item.title}
-                          width={1200}
-                          height={720}
-                          sizes="(max-width: 768px) 100vw, 900px"
-                          loading="lazy"
-                          className="w-full object-cover"
-                          unoptimized
-                        />
-                        {block.caption ? <p className="px-4 py-3 text-xs text-ink/55">{block.caption}</p> : null}
-                      </div>
-                    );
-                  }
-
-                  return <p key={`${block.type}-${index}`}>{block.text}</p>;
-                })}
-              </div>
+              <DetailContentBlocks contentBlocks={item.contentBlocks} itemTitle={item.title} />
             </div>
 
             <div className="grid gap-3 md:grid-cols-2">

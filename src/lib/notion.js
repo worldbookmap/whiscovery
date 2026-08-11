@@ -483,9 +483,15 @@ export const getWhiskyItemDetail = async (databaseId, pageId) => {
       return block;
     }
 
+    const desktopUrl = normalizeImageUrl(block.url, { width: 960, quality: 48 });
+    const mobileUrl = normalizeImageUrl(block.url, { width: 560, quality: 40 });
+
     return {
       ...block,
-      url: normalizeImageUrl(block.url, { width: 1280, quality: 62 }),
+      originalUrl: block.url,
+      mobileUrl,
+      desktopUrl,
+      url: desktopUrl,
     };
   });
   const detailItem = {
