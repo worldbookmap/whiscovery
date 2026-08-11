@@ -8,6 +8,11 @@
       "Aberfeldy 12 Year Old",
       "Aberfeldy 16 Year Old",
       "Aberfeldy 21 Year Old"
+    ],
+    "whiskeys_ko": [
+      "애버펠디 12년",
+      "애버펠디 16년",
+      "애버펠디 21년"
     ]
   },
   {
@@ -19,6 +24,11 @@
       "Aberlour 12 Year Old",
       "Aberlour 16 Year Old",
       "Aberlour A'bunadh"
+    ],
+    "whiskeys_ko": [
+      "아벨라워 12년",
+      "아벨라워 16년",
+      "아벨라워 A'bunadh"
     ]
   },
   {
@@ -30,6 +40,11 @@
       "Ardbeg 10 Year Old",
       "Ardbeg Uigeadail",
       "Ardbeg Corryvreckan"
+    ],
+    "whiskeys_ko": [
+      "아드벡 10년",
+      "아드벡 우거다일",
+      "아드벡 코리브레칸"
     ]
   },
   {
@@ -40,6 +55,10 @@
     "whiskeys": [
       "The Ardmore Legacy",
       "Ardmore 12 Year Old Port Wood Finish"
+    ],
+    "whiskeys_ko": [
+      "The 아드모어 레거시",
+      "아드모어 12년 Port Wood Finish"
     ]
   },
   {
@@ -51,6 +70,11 @@
       "Arran 10 Year Old",
       "Arran Sherry Cask The Bodega",
       "Arran 18 Year Old"
+    ],
+    "whiskeys_ko": [
+      "아란 10년",
+      "아란 셰리 캐스크 The Bodega",
+      "아란 18년"
     ]
   },
   {
@@ -62,6 +86,11 @@
       "Auchentoshan 12 Year Old",
       "Auchentoshan Three Wood",
       "Auchentoshan American Oak"
+    ],
+    "whiskeys_ko": [
+      "오켄토션 12년",
+      "오켄토션 쓰리 우드",
+      "오켄토션 아메리칸 오크"
     ]
   },
   {
@@ -73,6 +102,11 @@
       "Balblair 12 Year Old",
       "Balblair 15 Year Old",
       "Balblair 18 Year Old"
+    ],
+    "whiskeys_ko": [
+      "발블레어 12년",
+      "발블레어 15년",
+      "발블레어 18년"
     ]
   },
   {
@@ -83,7 +117,14 @@
     "whiskeys": [
       "The Balvenie DoubleWood 12 Year Old",
       "The Balvenie Caribbean Cask 14 Year Old",
-      "The Balvenie PortWood 21 Year Old"
+      "The Balvenie PortWood 21 Year Old",
+      "Monkey Shoulder"
+    ],
+    "whiskeys_ko": [
+      "더 발베니 더블우드 12년",
+      "더 발베니 캐리비안 캐스크 14년",
+      "더 발베니 포트우드 21년",
+      "몽키 숄더"
     ]
   },
   {
@@ -94,6 +135,10 @@
     "whiskeys": [
       "Ben Nevis 10 Year Old",
       "Ben Nevis Traditional"
+    ],
+    "whiskeys_ko": [
+      "벤 네비스 10년",
+      "벤 네비스 Traditional"
     ]
   },
   {
@@ -105,6 +150,11 @@
       "Benriach The Original Ten",
       "Benriach The Smoky Ten",
       "Benriach The Twelve"
+    ],
+    "whiskeys_ko": [
+      "벤리악 The 오리지널 Ten",
+      "벤리악 더 스모키 텐",
+      "벤리악 더 트웰브"
     ]
   },
   {
@@ -116,6 +166,11 @@
       "Benromach 10 Year Old",
       "Benromach 15 Year Old",
       "Benromach Peat Smoke"
+    ],
+    "whiskeys_ko": [
+      "벤로막 10년",
+      "벤로막 15년",
+      "벤로막 피트 스모크"
     ]
   },
   {
@@ -125,6 +180,9 @@
     "name_ko": "블레어 아솔 증류소",
     "whiskeys": [
       "Blair Athol 12 Year Old Flora & Fauna"
+    ],
+    "whiskeys_ko": [
+      "블레어 아솔 12년 Flora & Fauna"
     ]
   },
   {
@@ -136,6 +194,11 @@
       "Bowmore 12 Year Old",
       "Bowmore 15 Year Old",
       "Bowmore 18 Year Old"
+    ],
+    "whiskeys_ko": [
+      "보모어 12년",
+      "보모어 15년",
+      "보모어 18년"
     ]
   },
   {
@@ -147,6 +210,11 @@
       "Bruichladdich The Classic Laddie",
       "Port Charlotte 10 Year Old",
       "Octomore"
+    ],
+    "whiskeys_ko": [
+      "브룩라디 The 클래식 Laddie",
+      "포트 샬롯 10년",
+      "옥토모어"
     ]
   },
   {
@@ -158,6 +226,11 @@
       "Bunnahabhain 12 Year Old",
       "Bunnahabhain 18 Year Old",
       "Bunnahabhain Toiteach A Dhà"
+    ],
+    "whiskeys_ko": [
+      "부나하벤 12년",
+      "부나하벤 18년",
+      "부나하벤 토이티치 아 다"
     ]
   },
   {
@@ -169,6 +242,11 @@
       "Caol Ila 12 Year Old",
       "Caol Ila 18 Year Old",
       "Caol Ila Distillers Edition"
+    ],
+    "whiskeys_ko": [
+      "쿨일라 12년",
+      "쿨일라 18년",
+      "쿨일라 디스틸러스 에디션"
     ]
   },
   {
@@ -180,6 +258,11 @@
       "Cardhu 12 Year Old",
       "Cardhu 15 Year Old",
       "Cardhu 18 Year Old"
+    ],
+    "whiskeys_ko": [
+      "카듀 12년",
+      "카듀 15년",
+      "카듀 18년"
     ]
   },
   {
@@ -190,6 +273,10 @@
     "whiskeys": [
       "Clynelish 14 Year Old",
       "Clynelish Distillers Edition"
+    ],
+    "whiskeys_ko": [
+      "클라이넬리시 14년",
+      "클라이넬리시 디스틸러스 에디션"
     ]
   },
   {
@@ -201,6 +288,11 @@
       "Craigellachie 13 Year Old",
       "Craigellachie 17 Year Old",
       "Craigellachie 23 Year Old"
+    ],
+    "whiskeys_ko": [
+      "크레이겔라키 13년",
+      "크레이겔라키 17년",
+      "크레이겔라키 23년"
     ]
   },
   {
@@ -211,6 +303,10 @@
     "whiskeys": [
       "Cragganmore 12 Year Old",
       "Cragganmore Distillers Edition"
+    ],
+    "whiskeys_ko": [
+      "크래건모어 12년",
+      "크래건모어 디스틸러스 에디션"
     ]
   },
   {
@@ -222,6 +318,11 @@
       "The Dalmore 12 Year Old",
       "The Dalmore 15 Year Old",
       "The Dalmore King Alexander III"
+    ],
+    "whiskeys_ko": [
+      "더 달모어 12년",
+      "더 달모어 15년",
+      "더 달모어 King Alexander III"
     ]
   },
   {
@@ -233,6 +334,11 @@
       "Dalwhinnie 15 Year Old",
       "Dalwhinnie Distillers Edition",
       "Dalwhinnie Winter's Gold"
+    ],
+    "whiskeys_ko": [
+      "달위니 15년",
+      "달위니 디스틸러스 에디션",
+      "달위니 윈터스 골드"
     ]
   },
   {
@@ -244,6 +350,11 @@
       "Deanston 12 Year Old",
       "Deanston Virgin Oak",
       "Deanston 18 Year Old"
+    ],
+    "whiskeys_ko": [
+      "딘스톤 12년",
+      "딘스톤 버진 오크",
+      "딘스톤 18년"
     ]
   },
   {
@@ -255,6 +366,11 @@
       "Edradour 10 Year Old",
       "Edradour 12 Year Old Caledonia",
       "Ballechin 10 Year Old"
+    ],
+    "whiskeys_ko": [
+      "에드라두어 10년",
+      "에드라두어 12년 Caledonia",
+      "발레친 10년"
     ]
   },
   {
@@ -265,6 +381,10 @@
     "whiskeys": [
       "Glen Garioch 12 Year Old",
       "Glen Garioch Founder's Reserve"
+    ],
+    "whiskeys_ko": [
+      "글렌 기어리 12년",
+      "글렌 기어리 Founder's 리저브"
     ]
   },
   {
@@ -276,6 +396,11 @@
       "Glenglassaugh Sandend",
       "Glenglassaugh Portsoy",
       "Glenglassaugh 12 Year Old"
+    ],
+    "whiskeys_ko": [
+      "글렌글라사 Sandend",
+      "글렌글라사 Portsoy",
+      "글렌글라사 12년"
     ]
   },
   {
@@ -287,6 +412,11 @@
       "The Glen Grant 10 Year Old",
       "The Glen Grant 12 Year Old",
       "The Glen Grant 18 Year Old"
+    ],
+    "whiskeys_ko": [
+      "더 글렌 그란트 10년",
+      "더 글렌 그란트 12년",
+      "더 글렌 그란트 18년"
     ]
   },
   {
@@ -298,6 +428,11 @@
       "The GlenAllachie 12 Year Old",
       "The GlenAllachie 15 Year Old",
       "The GlenAllachie 10 Year Old Cask Strength"
+    ],
+    "whiskeys_ko": [
+      "더 글렌알라키 12년",
+      "더 글렌알라키 15년",
+      "더 글렌알라키 10년 캐스크 스트렝스"
     ]
   },
   {
@@ -309,6 +444,11 @@
       "The GlenDronach 12 Year Old",
       "The GlenDronach 15 Year Old Revival",
       "The GlenDronach 18 Year Old Allardice"
+    ],
+    "whiskeys_ko": [
+      "더 글렌드로낙 12년",
+      "더 글렌드로낙 15년 리바이벌",
+      "더 글렌드로낙 18년 알라디스"
     ]
   },
   {
@@ -320,6 +460,11 @@
       "Glenfarclas 12 Year Old",
       "Glenfarclas 15 Year Old",
       "Glenfarclas 105 Cask Strength"
+    ],
+    "whiskeys_ko": [
+      "글렌파클라스 12년",
+      "글렌파클라스 15년",
+      "글렌파클라스 105 캐스크 스트렝스"
     ]
   },
   {
@@ -331,6 +476,11 @@
       "Glenfiddich 12 Year Old",
       "Glenfiddich 15 Year Old Solera",
       "Glenfiddich 18 Year Old"
+    ],
+    "whiskeys_ko": [
+      "글렌피딕 12년",
+      "글렌피딕 15년 솔레라",
+      "글렌피딕 18년"
     ]
   },
   {
@@ -342,6 +492,11 @@
       "Glengoyne 10 Year Old",
       "Glengoyne 12 Year Old",
       "Glengoyne 21 Year Old"
+    ],
+    "whiskeys_ko": [
+      "글렌고인 10년",
+      "글렌고인 12년",
+      "글렌고인 21년"
     ]
   },
   {
@@ -352,6 +507,10 @@
     "whiskeys": [
       "Glenkinchie 12 Year Old",
       "Glenkinchie Distillers Edition"
+    ],
+    "whiskeys_ko": [
+      "글렌킨치 12년",
+      "글렌킨치 디스틸러스 에디션"
     ]
   },
   {
@@ -363,6 +522,11 @@
       "The Glenlivet 12 Year Old",
       "The Glenlivet 15 Year Old French Oak Reserve",
       "The Glenlivet 18 Year Old"
+    ],
+    "whiskeys_ko": [
+      "더 글렌리벳 12년",
+      "더 글렌리벳 15년 French Oak 리저브",
+      "더 글렌리벳 18년"
     ]
   },
   {
@@ -374,6 +538,11 @@
       "Glenmorangie The Original 12 Year Old",
       "Glenmorangie Lasanta 12 Year Old",
       "Glenmorangie Quinta Ruban 14 Year Old"
+    ],
+    "whiskeys_ko": [
+      "글렌모렌지 The 오리지널 12년",
+      "글렌모렌지 라산타 12년",
+      "글렌모렌지 퀸타 루반 14년"
     ]
   },
   {
@@ -385,6 +554,11 @@
       "Glen Scotia Double Cask",
       "Glen Scotia 15 Year Old",
       "Glen Scotia Victoriana"
+    ],
+    "whiskeys_ko": [
+      "글렌 스코시아 더블 캐스크",
+      "글렌 스코시아 15년",
+      "글렌 스코시아 빅토리아나"
     ]
   },
   {
@@ -396,6 +570,11 @@
       "The Glenturret Triple Wood",
       "The Glenturret 12 Year Old",
       "The Glenturret 15 Year Old"
+    ],
+    "whiskeys_ko": [
+      "더 글렌터렛 트리플 우드",
+      "더 글렌터렛 12년",
+      "더 글렌터렛 15년"
     ]
   },
   {
@@ -407,6 +586,11 @@
       "Highland Park 12 Year Old Viking Honour",
       "Highland Park 15 Year Old Viking Heart",
       "Highland Park 18 Year Old Viking Pride"
+    ],
+    "whiskeys_ko": [
+      "하이랜드 파크 12년 바이킹 아너",
+      "하이랜드 파크 15년 바이킹 하트",
+      "하이랜드 파크 18년 바이킹 프라이드"
     ]
   },
   {
@@ -418,6 +602,11 @@
       "Jura 10 Year Old",
       "Jura Seven Wood",
       "Jura 18 Year Old"
+    ],
+    "whiskeys_ko": [
+      "주라 10년",
+      "주라 세븐 우드",
+      "주라 18년"
     ]
   },
   {
@@ -429,6 +618,11 @@
       "Lagavulin 16 Year Old",
       "Lagavulin 8 Year Old",
       "Lagavulin Distillers Edition"
+    ],
+    "whiskeys_ko": [
+      "라가불린 16년",
+      "라가불린 8년",
+      "라가불린 디스틸러스 에디션"
     ]
   },
   {
@@ -440,6 +634,11 @@
       "Laphroaig 10 Year Old",
       "Laphroaig Quarter Cask",
       "Laphroaig Lore"
+    ],
+    "whiskeys_ko": [
+      "라프로익 10년",
+      "라프로익 쿼터 캐스크",
+      "라프로익 로어"
     ]
   },
   {
@@ -449,6 +648,9 @@
     "name_ko": "링크우드 증류소",
     "whiskeys": [
       "Linkwood 12 Year Old Flora & Fauna"
+    ],
+    "whiskeys_ko": [
+      "링크우드 12년 Flora & Fauna"
     ]
   },
   {
@@ -460,6 +662,11 @@
       "Loch Lomond Original",
       "Loch Lomond 12 Year Old",
       "Loch Lomond 18 Year Old"
+    ],
+    "whiskeys_ko": [
+      "로크 로몬드 오리지널",
+      "로크 로몬드 12년",
+      "로크 로몬드 18년"
     ]
   },
   {
@@ -470,6 +677,10 @@
     "whiskeys": [
       "Longmorn 16 Year Old",
       "Longmorn The Distiller's Choice"
+    ],
+    "whiskeys_ko": [
+      "롱몬 16년",
+      "롱몬 The Distiller's Choice"
     ]
   },
   {
@@ -481,6 +692,11 @@
       "The Macallan Double Cask 12 Years Old",
       "The Macallan Sherry Oak 12 Years Old",
       "The Macallan Sherry Oak 18 Years Old"
+    ],
+    "whiskeys_ko": [
+      "더 맥캘란 더블 캐스크 12년",
+      "더 맥캘란 셰리 오크 12년",
+      "더 맥캘란 셰리 오크 18년"
     ]
   },
   {
@@ -492,6 +708,11 @@
       "Mortlach 12 Year Old The Wee Witchie",
       "Mortlach 16 Year Old Distiller's Dram",
       "Mortlach 20 Year Old Cowie's Blue Seal"
+    ],
+    "whiskeys_ko": [
+      "모틀락 12년 The Wee Witchie",
+      "모틀락 16년 Distiller's Dram",
+      "모틀락 20년 Cowie's Blue Seal"
     ]
   },
   {
@@ -503,6 +724,11 @@
       "Oban 14 Year Old",
       "Oban Little Bay",
       "Oban Distillers Edition"
+    ],
+    "whiskeys_ko": [
+      "오반 14년",
+      "오반 리틀 베이",
+      "오반 디스틸러스 에디션"
     ]
   },
   {
@@ -514,6 +740,11 @@
       "Old Pulteney 12 Year Old",
       "Old Pulteney 15 Year Old",
       "Old Pulteney 18 Year Old"
+    ],
+    "whiskeys_ko": [
+      "올드 풀트니 12년",
+      "올드 풀트니 15년",
+      "올드 풀트니 18년"
     ]
   },
   {
@@ -525,6 +756,11 @@
       "Royal Brackla 12 Year Old",
       "Royal Brackla 18 Year Old",
       "Royal Brackla 21 Year Old"
+    ],
+    "whiskeys_ko": [
+      "로얄 브라클라 12년",
+      "로얄 브라클라 18년",
+      "로얄 브라클라 21년"
     ]
   },
   {
@@ -535,6 +771,10 @@
     "whiskeys": [
       "Royal Lochnagar 12 Year Old",
       "Royal Lochnagar Selected Reserve"
+    ],
+    "whiskeys_ko": [
+      "로얄 로크나가 12년",
+      "로얄 로크나가 Selected 리저브"
     ]
   },
   {
@@ -545,6 +785,10 @@
     "whiskeys": [
       "Scapa Skiren",
       "Scapa Glansa"
+    ],
+    "whiskeys_ko": [
+      "스카파 스키렌",
+      "스카파 글란사"
     ]
   },
   {
@@ -556,6 +800,11 @@
       "Speyburn 10 Year Old",
       "Speyburn 15 Year Old",
       "Speyburn 18 Year Old"
+    ],
+    "whiskeys_ko": [
+      "스페이번 10년",
+      "스페이번 15년",
+      "스페이번 18년"
     ]
   },
   {
@@ -568,6 +817,12 @@
       "Springbank 15 Year Old",
       "Springbank 18 Year Old",
       "Longrow Peated"
+    ],
+    "whiskeys_ko": [
+      "스프링뱅크 10년",
+      "스프링뱅크 15년",
+      "스프링뱅크 18년",
+      "롱로우 Peated"
     ]
   },
   {
@@ -578,6 +833,10 @@
     "whiskeys": [
       "Strathisla 12 Year Old",
       "Chivas Regal 12 Year Old"
+    ],
+    "whiskeys_ko": [
+      "스트라스아일라 12년",
+      "시바스 리갈 12년"
     ]
   },
   {
@@ -589,6 +848,11 @@
       "Talisker 10 Year Old",
       "Talisker Storm",
       "Talisker 18 Year Old"
+    ],
+    "whiskeys_ko": [
+      "탈리스커 10년",
+      "탈리스커 스톰",
+      "탈리스커 18년"
     ]
   },
   {
@@ -600,6 +864,11 @@
       "Tamdhu 12 Year Old",
       "Tamdhu 15 Year Old",
       "Tamdhu Batch Strength"
+    ],
+    "whiskeys_ko": [
+      "탐듀 12년",
+      "탐듀 15년",
+      "탐듀 배치 스트렝스"
     ]
   },
   {
@@ -611,6 +880,11 @@
       "Tobermory 12 Year Old",
       "Ledaig 10 Year Old",
       "Ledaig 18 Year Old"
+    ],
+    "whiskeys_ko": [
+      "토버모리 12년",
+      "레칙 10년",
+      "레칙 18년"
     ]
   },
   {
@@ -622,6 +896,11 @@
       "Tomatin 12 Year Old",
       "Tomatin 14 Year Old Port Casks",
       "Tomatin 18 Year Old"
+    ],
+    "whiskeys_ko": [
+      "토마틴 12년",
+      "토마틴 14년 Port Casks",
+      "토마틴 18년"
     ]
   },
   {
@@ -633,6 +912,11 @@
       "Tomintoul 10 Year Old",
       "Tomintoul 16 Year Old",
       "Old Ballantruan"
+    ],
+    "whiskeys_ko": [
+      "토민타울 10년",
+      "토민타울 16년",
+      "올드 발란트루안"
     ]
   },
   {
@@ -644,6 +928,11 @@
       "Tullibardine Sovereign",
       "Tullibardine 225 Sauternes Finish",
       "Tullibardine 500 Sherry Finish"
+    ],
+    "whiskeys_ko": [
+      "툴리바딘 Sovereign",
+      "툴리바딘 225 Sauternes Finish",
+      "툴리바딘 500 Sherry Finish"
     ]
   },
   {
@@ -655,6 +944,11 @@
       "Fettercairn 12 Year Old",
       "Fettercairn 16 Year Old",
       "Fettercairn 22 Year Old"
+    ],
+    "whiskeys_ko": [
+      "페터케언 12년",
+      "페터케언 16년",
+      "페터케언 22년"
     ]
   },
   {
@@ -667,6 +961,12 @@
       "Redbreast 12 Year Old",
       "Green Spot",
       "Midleton Very Rare"
+    ],
+    "whiskeys_ko": [
+      "제임슨 아이리시 위스키",
+      "레드브레스트 12년",
+      "그린 스팟",
+      "미들턴 Very Rare"
     ]
   },
   {
@@ -679,6 +979,12 @@
       "Bushmills Black Bush",
       "Bushmills 10 Year Old Single Malt",
       "Bushmills 16 Year Old Single Malt"
+    ],
+    "whiskeys_ko": [
+      "부시밀스 오리지널",
+      "부시밀스 블랙 부시",
+      "부시밀스 10년 싱글 몰트",
+      "부시밀스 16년 싱글 몰트"
     ]
   },
   {
@@ -690,6 +996,11 @@
       "Teeling Small Batch",
       "Teeling Single Malt",
       "Teeling Single Pot Still"
+    ],
+    "whiskeys_ko": [
+      "틸링 스몰 배치",
+      "틸링 싱글 몰트",
+      "틸링 싱글 포트 스틸"
     ]
   },
   {
@@ -701,6 +1012,11 @@
       "Tullamore D.E.W. Original",
       "Tullamore D.E.W. 12 Year Old Special Reserve",
       "Tullamore D.E.W. 14 Year Old Single Malt"
+    ],
+    "whiskeys_ko": [
+      "툴라모어 D.E.W. 오리지널",
+      "툴라모어 D.E.W. 12년 Special 리저브",
+      "툴라모어 D.E.W. 14년 싱글 몰트"
     ]
   },
   {
@@ -711,6 +1027,10 @@
     "whiskeys": [
       "Kilbeggan Traditional Irish Whiskey",
       "Kilbeggan Single Pot Still"
+    ],
+    "whiskeys_ko": [
+      "킬베간 Traditional 아이리시 위스키",
+      "킬베간 싱글 포트 스틸"
     ]
   },
   {
@@ -721,6 +1041,10 @@
     "whiskeys": [
       "Dingle Single Malt",
       "Dingle Single Pot Still"
+    ],
+    "whiskeys_ko": [
+      "딩글 싱글 몰트",
+      "딩글 싱글 포트 스틸"
     ]
   },
   {
@@ -732,6 +1056,11 @@
       "Waterford The Cuvée",
       "Waterford Single Farm Origin",
       "Waterford Biodynamic Luna"
+    ],
+    "whiskeys_ko": [
+      "워터퍼드 더 퀴베",
+      "워터퍼드 Single Farm Origin",
+      "워터퍼드 Biodynamic Luna"
     ]
   },
   {
@@ -741,6 +1070,9 @@
     "name_ko": "슬레인 증류소",
     "whiskeys": [
       "Slane Irish Whiskey"
+    ],
+    "whiskeys_ko": [
+      "슬레인 아이리시 위스키"
     ]
   },
   {
@@ -752,6 +1084,11 @@
       "Yamazaki Distiller's Reserve",
       "Yamazaki 12 Years Old",
       "Yamazaki 18 Years Old"
+    ],
+    "whiskeys_ko": [
+      "야마자키 Distiller's 리저브",
+      "야마자키 12년",
+      "야마자키 18년"
     ]
   },
   {
@@ -763,6 +1100,11 @@
       "Hakushu Distiller's Reserve",
       "Hakushu 12 Years Old",
       "Hakushu 18 Years Old"
+    ],
+    "whiskeys_ko": [
+      "하쿠슈 Distiller's 리저브",
+      "하쿠슈 12년",
+      "하쿠슈 18년"
     ]
   },
   {
@@ -773,6 +1115,10 @@
     "whiskeys": [
       "Nikka Single Malt Yoichi",
       "Yoichi 10 Year Old"
+    ],
+    "whiskeys_ko": [
+      "닛카 싱글 몰트 요이치",
+      "요이치 10년"
     ]
   },
   {
@@ -783,6 +1129,10 @@
     "whiskeys": [
       "Nikka Single Malt Miyagikyo",
       "Miyagikyo 10 Year Old"
+    ],
+    "whiskeys_ko": [
+      "닛카 싱글 몰트 미야기쿄",
+      "미야기쿄 10년"
     ]
   },
   {
@@ -794,6 +1144,11 @@
       "Ichiro's Malt Chichibu The First",
       "Ichiro's Malt Chichibu On The Way",
       "Ichiro's Malt Chichibu US Edition"
+    ],
+    "whiskeys_ko": [
+      "이치로즈 몰트 치치부 The First",
+      "이치로즈 몰트 치치부 On The Way",
+      "이치로즈 몰트 치치부 US Edition"
     ]
   },
   {
@@ -805,6 +1160,11 @@
       "Fuji Single Malt Japanese Whisky",
       "Fuji Single Grain Japanese Whisky",
       "Fuji Single Blended Japanese Whisky"
+    ],
+    "whiskeys_ko": [
+      "후지 싱글 몰트 Japanese 위스키",
+      "후지 싱글 그레인 Japanese 위스키",
+      "후지 싱글 블렌디드 Japanese 위스키"
     ]
   },
   {
@@ -815,6 +1175,10 @@
     "whiskeys": [
       "Mars Komagatake Single Malt",
       "Mars Komagatake Edition"
+    ],
+    "whiskeys_ko": [
+      "마르스 코마가타케 싱글 몰트",
+      "마르스 코마가타케 Edition"
     ]
   },
   {
@@ -825,6 +1189,10 @@
     "whiskeys": [
       "Mars Tsunuki Single Malt",
       "Mars Tsunuki The First"
+    ],
+    "whiskeys_ko": [
+      "마르스 츠누키 싱글 몰트",
+      "마르스 츠누키 The First"
     ]
   },
   {
@@ -835,6 +1203,10 @@
     "whiskeys": [
       "Akkeshi Single Malt Whisky",
       "Akkeshi Blended Whisky"
+    ],
+    "whiskeys_ko": [
+      "앗케시 싱글 몰트 위스키",
+      "앗케시 Blended 위스키"
     ]
   },
   {
@@ -846,6 +1218,11 @@
       "Shizuoka Single Malt Prologue K",
       "Shizuoka Single Malt Prologue W",
       "Shizuoka Pot Still K"
+    ],
+    "whiskeys_ko": [
+      "시즈오카 싱글 몰트 Prologue K",
+      "시즈오카 싱글 몰트 Prologue W",
+      "시즈오카 Pot Still K"
     ]
   },
   {
@@ -858,6 +1235,12 @@
       "Jack Daniel's Gentleman Jack",
       "Jack Daniel's Single Barrel Select",
       "Jack Daniel's Bonded"
+    ],
+    "whiskeys_ko": [
+      "잭 다니엘스 Old No. 7",
+      "잭 다니엘스 Gentleman Jack",
+      "잭 다니엘스 싱글 배럴 Select",
+      "잭 다니엘스 본디드"
     ]
   },
   {
@@ -869,6 +1252,11 @@
       "George Dickel No. 12",
       "George Dickel Barrel Select",
       "George Dickel Bottled in Bond"
+    ],
+    "whiskeys_ko": [
+      "조지 디켈 No. 12",
+      "조지 디켈 Barrel Select",
+      "조지 디켈 Bottled in Bond"
     ]
   },
   {
@@ -881,6 +1269,12 @@
       "Eagle Rare 10 Year Old",
       "Blanton's Original Single Barrel",
       "W.L. Weller Special Reserve"
+    ],
+    "whiskeys_ko": [
+      "버팔로 트레이스 켄터키 스트레이트 버번",
+      "이글 레어 10년",
+      "블랑톤 오리지널 싱글 배럴",
+      "W.L. 웰러 Special 리저브"
     ]
   },
   {
@@ -892,6 +1286,11 @@
       "Woodford Reserve Kentucky Straight Bourbon",
       "Woodford Reserve Double Oaked",
       "Woodford Reserve Rye"
+    ],
+    "whiskeys_ko": [
+      "우드포드 리저브 켄터키 스트레이트 버번",
+      "우드포드 리저브 더블 오크",
+      "우드포드 리저브 라이"
     ]
   },
   {
@@ -903,6 +1302,11 @@
       "Maker's Mark",
       "Maker's Mark 46",
       "Maker's Mark Cask Strength"
+    ],
+    "whiskeys_ko": [
+      "메이커스 마크",
+      "메이커스 마크 46",
+      "메이커스 마크 캐스크 스트렝스"
     ]
   },
   {
@@ -914,6 +1318,11 @@
       "Four Roses Bourbon",
       "Four Roses Small Batch",
       "Four Roses Single Barrel"
+    ],
+    "whiskeys_ko": [
+      "포 로지스 버번",
+      "포 로지스 스몰 배치",
+      "포 로지스 싱글 배럴"
     ]
   },
   {
@@ -925,6 +1334,11 @@
       "Wild Turkey 101",
       "Wild Turkey Rare Breed",
       "Russell's Reserve 10 Year Old"
+    ],
+    "whiskeys_ko": [
+      "와일드 터키 101",
+      "와일드 터키 Rare Breed",
+      "러셀 리저브 10년"
     ]
   },
   {
@@ -937,6 +1351,12 @@
       "Jim Beam Black",
       "Booker's Bourbon",
       "Knob Creek 9 Year Old"
+    ],
+    "whiskeys_ko": [
+      "짐 빔 화이트 라벨",
+      "짐 빔 블랙",
+      "부커스 버번",
+      "놉 크릭 9년"
     ]
   },
   {
@@ -949,6 +1369,12 @@
       "Elijah Craig Small Batch",
       "Larceny Small Batch",
       "Henry McKenna Single Barrel"
+    ],
+    "whiskeys_ko": [
+      "에반 윌리엄스 블랙 라벨",
+      "엘라이저 크레이그 스몰 배치",
+      "라세니 스몰 배치",
+      "헨리 맥켄나 싱글 배럴"
     ]
   },
   {
@@ -960,6 +1386,11 @@
       "Old Forester 86 Proof",
       "Old Forester 100 Proof",
       "Old Forester 1920 Prohibition Style"
+    ],
+    "whiskeys_ko": [
+      "올드 포레스터 86 Proof",
+      "올드 포레스터 100 Proof",
+      "올드 포레스터 1920 Prohibition Style"
     ]
   },
   {
@@ -970,6 +1401,10 @@
     "whiskeys": [
       "Angel's Envy Kentucky Straight Bourbon Finished in Port Wine Barrels",
       "Angel's Envy Rye Finished in Caribbean Rum Casks"
+    ],
+    "whiskeys_ko": [
+      "엔젤스 엔비 켄터키 스트레이트 버번 Finished in Port Wine Barrels",
+      "엔젤스 엔비 라이 Finished in Caribbean Rum Casks"
     ]
   },
   {
@@ -981,6 +1416,11 @@
       "Michter's US*1 Kentucky Straight Bourbon",
       "Michter's US*1 American Whiskey",
       "Michter's US*1 Single Barrel Straight Rye"
+    ],
+    "whiskeys_ko": [
+      "믹터스 US*1 켄터키 스트레이트 버번",
+      "믹터스 US*1 American 위스키",
+      "믹터스 US*1 싱글 배럴 스트레이트 라이"
     ]
   },
   {
@@ -992,6 +1432,11 @@
       "Willett Pot Still Reserve",
       "Willett Family Estate Bottled Bourbon",
       "Noah's Mill"
+    ],
+    "whiskeys_ko": [
+      "윌렛 Pot Still 리저브",
+      "윌렛 Family Estate Bottled 버번",
+      "노아스 밀"
     ]
   },
   {
@@ -1003,6 +1448,11 @@
       "Bardstown Bourbon Company Origin Series Bourbon",
       "Bardstown Bourbon Company Discovery Series",
       "Bardstown Bourbon Company Fusion Series"
+    ],
+    "whiskeys_ko": [
+      "바즈타운 버번 컴퍼니 Origin Series 버번",
+      "바즈타운 버번 컴퍼니 Discovery Series",
+      "바즈타운 버번 컴퍼니 퓨전 Series"
     ]
   },
   {
@@ -1014,6 +1464,11 @@
       "Kavalan Classic Single Malt",
       "Kavalan Solist Vinho Barrique",
       "Kavalan Solist Sherry Cask"
+    ],
+    "whiskeys_ko": [
+      "카발란 클래식 싱글 몰트",
+      "카발란 Solist Vinho Barrique",
+      "카발란 Solist 셰리 캐스크"
     ]
   },
   {
@@ -1024,6 +1479,10 @@
     "whiskeys": [
       "OMAR Single Malt Sherry Cask",
       "OMAR Single Malt Bourbon Cask"
+    ],
+    "whiskeys_ko": [
+      "오마르 싱글 몰트 셰리 캐스크",
+      "오마르 싱글 몰트 버번 Cask"
     ]
   },
   {
@@ -1035,6 +1494,11 @@
       "Amrut Indian Single Malt",
       "Amrut Fusion",
       "Amrut Peated Indian Single Malt"
+    ],
+    "whiskeys_ko": [
+      "암룻 Indian 싱글 몰트",
+      "암룻 퓨전",
+      "암룻 Peated Indian 싱글 몰트"
     ]
   },
   {
@@ -1046,6 +1510,11 @@
       "Paul John Brilliance",
       "Paul John Edited",
       "Paul John Bold"
+    ],
+    "whiskeys_ko": [
+      "폴 존 브릴리언스",
+      "폴 존 에디티드",
+      "폴 존 볼드"
     ]
   },
   {
@@ -1057,6 +1526,11 @@
       "Rampur Select Indian Single Malt",
       "Rampur Double Cask",
       "Rampur Asava"
+    ],
+    "whiskeys_ko": [
+      "람푸르 Select Indian 싱글 몰트",
+      "람푸르 더블 캐스크",
+      "람푸르 아사바"
     ]
   },
   {
@@ -1068,6 +1542,11 @@
       "J.P. Wiser's Deluxe",
       "Lot No. 40 Rye Whisky",
       "Pike Creek 10 Year Old"
+    ],
+    "whiskeys_ko": [
+      "J.P. 와이저스 디럭스",
+      "랏 넘버 40 라이 위스키",
+      "파이크 크릭 10년"
     ]
   },
   {
@@ -1079,6 +1558,11 @@
       "Crown Royal Deluxe",
       "Crown Royal Northern Harvest Rye",
       "Crown Royal Black"
+    ],
+    "whiskeys_ko": [
+      "크라운 로열 디럭스",
+      "크라운 로열 Northern Harvest 라이",
+      "크라운 로열 블랙"
     ]
   },
   {
@@ -1090,6 +1574,11 @@
       "Lark Classic Cask",
       "Lark Symphony No. 1",
       "Lark Chinotto Cask"
+    ],
+    "whiskeys_ko": [
+      "라크 클래식 Cask",
+      "라크 Symphony No. 1",
+      "라크 Chinotto Cask"
     ]
   },
   {
@@ -1101,6 +1590,11 @@
       "Kentucky Peerless Straight Bourbon",
       "Kentucky Peerless Straight Rye",
       "Peerless Double Oak Bourbon"
+    ],
+    "whiskeys_ko": [
+      "켄터키 피어리스 스트레이트 버번",
+      "켄터키 피어리스 스트레이트 라이",
+      "피어리스 더블 오크 버번"
     ]
   },
   {
@@ -1112,6 +1606,11 @@
       "Ki One Batch 1",
       "Ki One Batch 2",
       "Ki One Korean Single Malt"
+    ],
+    "whiskeys_ko": [
+      "기원 Batch 1",
+      "기원 Batch 2",
+      "기원 Korean 싱글 몰트"
     ]
   },
   {
@@ -1123,6 +1622,11 @@
       "Kimchangsoo Whisky 01",
       "Kimchangsoo Whisky 02",
       "Kimchangsoo Whisky 03"
+    ],
+    "whiskeys_ko": [
+      "김창수 위스키 01",
+      "김창수 위스키 02",
+      "김창수 위스키 03"
     ]
   },
   {
@@ -1132,6 +1636,9 @@
     "name_ko": "올트 아 바인 증류소",
     "whiskeys": [
       "Allt-a-Bhainne 15 Year Old"
+    ],
+    "whiskeys_ko": [
+      "올트 아 바인 15년"
     ]
   },
   {
@@ -1142,6 +1649,10 @@
     "whiskeys": [
       "Aultmore 12 Year Old",
       "Aultmore 18 Year Old"
+    ],
+    "whiskeys_ko": [
+      "올트모어 12년",
+      "올트모어 18년"
     ]
   },
   {
@@ -1151,6 +1662,9 @@
     "name_ko": "발린달로크 증류소",
     "whiskeys": [
       "Ballindalloch Single Malt"
+    ],
+    "whiskeys_ko": [
+      "발린달로크 싱글 몰트"
     ]
   },
   {
@@ -1160,6 +1674,9 @@
     "name_ko": "발메낙 증류소",
     "whiskeys": [
       "Balmenach 12 Year Old"
+    ],
+    "whiskeys_ko": [
+      "발메낙 12년"
     ]
   },
   {
@@ -1169,6 +1686,9 @@
     "name_ko": "벤리네스 증류소",
     "whiskeys": [
       "Benrinnes 15 Year Old Flora & Fauna"
+    ],
+    "whiskeys_ko": [
+      "벤리네스 15년 Flora & Fauna"
     ]
   },
   {
@@ -1178,6 +1698,9 @@
     "name_ko": "브레이발 증류소",
     "whiskeys": [
       "Braeval Single Malt"
+    ],
+    "whiskeys_ko": [
+      "브레이발 싱글 몰트"
     ]
   },
   {
@@ -1188,6 +1711,10 @@
     "whiskeys": [
       "Cameron Brig Single Grain Scotch Whisky",
       "Haig Club"
+    ],
+    "whiskeys_ko": [
+      "카메론 브리그 싱글 그레인 스카치 위스키",
+      "헤이그 클럽"
     ]
   },
   {
@@ -1197,6 +1724,9 @@
     "name_ko": "달유인 증류소",
     "whiskeys": [
       "Dailuaine 16 Year Old Flora & Fauna"
+    ],
+    "whiskeys_ko": [
+      "달유인 16년 Flora & Fauna"
     ]
   },
   {
@@ -1206,6 +1736,9 @@
     "name_ko": "달무낙 증류소",
     "whiskeys": [
       "Dalmünach Single Malt"
+    ],
+    "whiskeys_ko": [
+      "달무낙 싱글 몰트"
     ]
   },
   {
@@ -1216,6 +1749,10 @@
     "whiskeys": [
       "The Singleton of Dufftown 12 Year Old",
       "The Singleton of Dufftown 15 Year Old"
+    ],
+    "whiskeys_ko": [
+      "더 싱글톤 오브 더프타운 12년",
+      "더 싱글톤 오브 더프타운 15년"
     ]
   },
   {
@@ -1226,6 +1763,10 @@
     "whiskeys": [
       "The Singleton of Glendullan 12 Year Old",
       "The Singleton of Glendullan 15 Year Old"
+    ],
+    "whiskeys_ko": [
+      "더 싱글톤 오브 글렌둘란 12년",
+      "더 싱글톤 오브 글렌둘란 15년"
     ]
   },
   {
@@ -1235,6 +1776,9 @@
     "name_ko": "글렌 엘긴 증류소",
     "whiskeys": [
       "Glen Elgin 12 Year Old"
+    ],
+    "whiskeys_ko": [
+      "글렌 엘긴 12년"
     ]
   },
   {
@@ -1244,6 +1788,9 @@
     "name_ko": "글렌로시 증류소",
     "whiskeys": [
       "Glenlossie 10 Year Old Flora & Fauna"
+    ],
+    "whiskeys_ko": [
+      "글렌로시 10년 Flora & Fauna"
     ]
   },
   {
@@ -1255,6 +1802,11 @@
       "Glen Moray Classic",
       "Glen Moray 12 Year Old",
       "Glen Moray 18 Year Old"
+    ],
+    "whiskeys_ko": [
+      "글렌 모레이 클래식",
+      "글렌 모레이 12년",
+      "글렌 모레이 18년"
     ]
   },
   {
@@ -1265,6 +1817,10 @@
     "whiskeys": [
       "The Glenrothes 12 Year Old",
       "The Glenrothes 18 Year Old"
+    ],
+    "whiskeys_ko": [
+      "더 글렌로시스 12년",
+      "더 글렌로시스 18년"
     ]
   },
   {
@@ -1274,6 +1830,9 @@
     "name_ko": "마녹모어 증류소",
     "whiskeys": [
       "Mannochmore 12 Year Old Flora & Fauna"
+    ],
+    "whiskeys_ko": [
+      "마녹모어 12년 Flora & Fauna"
     ]
   },
   {
@@ -1283,6 +1842,9 @@
     "name_ko": "밀튼더프 증류소",
     "whiskeys": [
       "Miltonduff 15 Year Old"
+    ],
+    "whiskeys_ko": [
+      "밀튼더프 15년"
     ]
   },
   {
@@ -1292,6 +1854,9 @@
     "name_ko": "스트라스밀 증류소",
     "whiskeys": [
       "Strathmill 12 Year Old Flora & Fauna"
+    ],
+    "whiskeys_ko": [
+      "스트라스밀 12년 Flora & Fauna"
     ]
   },
   {
@@ -1302,6 +1867,10 @@
     "whiskeys": [
       "Knockando 12 Year Old",
       "Knockando 18 Year Old"
+    ],
+    "whiskeys_ko": [
+      "노칸두 12년",
+      "노칸두 18년"
     ]
   },
   {
@@ -1311,6 +1880,9 @@
     "name_ko": "글렌 스페이 증류소",
     "whiskeys": [
       "Glen Spey 12 Year Old Flora & Fauna"
+    ],
+    "whiskeys_ko": [
+      "글렌 스페이 12년 Flora & Fauna"
     ]
   },
   {
@@ -1321,6 +1893,10 @@
     "whiskeys": [
       "Kininvie 23 Year Old",
       "Kininvie 17 Year Old"
+    ],
+    "whiskeys_ko": [
+      "키닌비 23년",
+      "키닌비 17년"
     ]
   },
   {
@@ -1331,6 +1907,10 @@
     "whiskeys": [
       "Glen Keith Distillery Edition",
       "Glen Keith 21 Year Old"
+    ],
+    "whiskeys_ko": [
+      "글렌 키스 디스틸러리 에디션",
+      "글렌 키스 21년"
     ]
   },
   {
@@ -1341,6 +1921,10 @@
     "whiskeys": [
       "Glenburgie 15 Year Old",
       "Ballantine's 17 Year Old"
+    ],
+    "whiskeys_ko": [
+      "글렌버기 15년",
+      "발렌타인 17년"
     ]
   },
   {
@@ -1350,6 +1934,9 @@
     "name_ko": "인치고어 증류소",
     "whiskeys": [
       "Inchgower 14 Year Old Flora & Fauna"
+    ],
+    "whiskeys_ko": [
+      "인치고어 14년 Flora & Fauna"
     ]
   },
   {
@@ -1359,6 +1946,9 @@
     "name_ko": "로즈아일 증류소",
     "whiskeys": [
       "Roseisle 12 Year Old The Origami Kite"
+    ],
+    "whiskeys_ko": [
+      "로즈아일 12년 The Origami Kite"
     ]
   },
   {
@@ -1368,6 +1958,9 @@
     "name_ko": "아비키 하이랜드 에스테이트 증류소",
     "whiskeys": [
       "Arbikie Highland Rye 1794"
+    ],
+    "whiskeys_ko": [
+      "아비키 Highland 라이 1794"
     ]
   },
   {
@@ -1378,6 +1971,10 @@
     "whiskeys": [
       "Glencadam 10 Year Old",
       "Glencadam 15 Year Old"
+    ],
+    "whiskeys_ko": [
+      "글렌카담 10년",
+      "글렌카담 15년"
     ]
   },
   {
@@ -1387,6 +1984,9 @@
     "name_ko": "인버고든 증류소",
     "whiskeys": [
       "The Invergordon 18 Year Old"
+    ],
+    "whiskeys_ko": [
+      "더 인버고든 18년"
     ]
   },
   {
@@ -1396,6 +1996,9 @@
     "name_ko": "티니닉 증류소",
     "whiskeys": [
       "Teaninich 10 Year Old Flora & Fauna"
+    ],
+    "whiskeys_ko": [
+      "티니닉 10년 Flora & Fauna"
     ]
   },
   {
@@ -1406,6 +2009,10 @@
     "whiskeys": [
       "Brora 30 Year Old",
       "Brora 35 Year Old"
+    ],
+    "whiskeys_ko": [
+      "브로라 30년",
+      "브로라 35년"
     ]
   },
   {
@@ -1415,6 +2022,9 @@
     "name_ko": "시티 오브 애버딘 증류소",
     "whiskeys": [
       "Aberdeen Whisky"
+    ],
+    "whiskeys_ko": [
+      "애버딘 위스키"
     ]
   },
   {
@@ -1425,6 +2035,10 @@
     "whiskeys": [
       "Eden Mill Art of St Andrews",
       "Eden Mill Single Malt"
+    ],
+    "whiskeys_ko": [
+      "에덴 밀 Art of St Andrews",
+      "에덴 밀 싱글 몰트"
     ]
   },
   {
@@ -1435,6 +2049,10 @@
     "whiskeys": [
       "Kingsbarns Dream to Dram",
       "Kingsbarns Balcomie"
+    ],
+    "whiskeys_ko": [
+      "킹스반스 Dream to Dram",
+      "킹스반스 Balcomie"
     ]
   },
   {
@@ -1445,6 +2063,10 @@
     "whiskeys": [
       "Holyrood Arrival",
       "Holyrood Embra"
+    ],
+    "whiskeys_ko": [
+      "홀리루드 Arrival",
+      "홀리루드 Embra"
     ]
   },
   {
@@ -1454,6 +2076,9 @@
     "name_ko": "포트 오브 리스 증류소",
     "whiskeys": [
       "Port of Leith Single Malt Scotch Whisky"
+    ],
+    "whiskeys_ko": [
+      "포트 오브 리스 싱글 몰트 스카치 위스키"
     ]
   },
   {
@@ -1464,6 +2089,10 @@
     "whiskeys": [
       "Clydeside Stobcross",
       "Clydeside Napier"
+    ],
+    "whiskeys_ko": [
+      "클라이드사이드 Stobcross",
+      "클라이드사이드 Napier"
     ]
   },
   {
@@ -1475,6 +2104,11 @@
       "Bladnoch Vinaya",
       "Bladnoch 11 Year Old",
       "Bladnoch Samsara"
+    ],
+    "whiskeys_ko": [
+      "블라드녹 Vinaya",
+      "블라드녹 11년",
+      "블라드녹 Samsara"
     ]
   },
   {
@@ -1484,6 +2118,9 @@
     "name_ko": "아일사 베이 증류소",
     "whiskeys": [
       "Ailsa Bay Sweet Smoke"
+    ],
+    "whiskeys_ko": [
+      "아일사 베이 Sweet Smoke"
     ]
   },
   {
@@ -1493,6 +2130,9 @@
     "name_ko": "거번 증류소",
     "whiskeys": [
       "Girvan Patent Still No.4 Apps"
+    ],
+    "whiskeys_ko": [
+      "거번 Patent Still No.4 Apps"
     ]
   },
   {
@@ -1503,6 +2143,10 @@
     "whiskeys": [
       "Kilkerran 12 Year Old",
       "Kilkerran Heavily Peated"
+    ],
+    "whiskeys_ko": [
+      "킬커란 12년",
+      "킬커란 Heavily Peated"
     ]
   },
   {
@@ -1513,6 +2157,10 @@
     "whiskeys": [
       "Ardnahoe Inaugural Release",
       "Ardnahoe Infinite Loch"
+    ],
+    "whiskeys_ko": [
+      "아드나호 Inaugural Release",
+      "아드나호 Infinite Loch"
     ]
   },
   {
@@ -1524,6 +2172,11 @@
       "Kilchoman Machir Bay",
       "Kilchoman Sanaig",
       "Kilchoman Loch Gorm"
+    ],
+    "whiskeys_ko": [
+      "킬호만 Machir Bay",
+      "킬호만 Sanaig",
+      "킬호만 Loch Gorm"
     ]
   },
   {
@@ -1534,6 +2187,10 @@
     "whiskeys": [
       "Port Ellen 40 Year Old",
       "Port Ellen 44 Year Old"
+    ],
+    "whiskeys_ko": [
+      "포트 엘런 40년",
+      "포트 엘런 44년"
     ]
   },
   {
@@ -1544,6 +2201,10 @@
     "whiskeys": [
       "Torabhaig Allt Gleann",
       "Torabhaig Cnoc Na Mòine"
+    ],
+    "whiskeys_ko": [
+      "토라베이그 Allt Gleann",
+      "토라베이그 Cnoc Na Mòine"
     ]
   },
   {
@@ -1554,6 +2215,10 @@
     "whiskeys": [
       "Isle of Raasay Single Malt",
       "Isle of Raasay Dùn Cana"
+    ],
+    "whiskeys_ko": [
+      "라세이 섬 싱글 몰트",
+      "라세이 섬 Dùn Cana"
     ]
   },
   {
@@ -1563,6 +2228,9 @@
     "name_ko": "아빈 자르그 증류소",
     "whiskeys": [
       "Abhainn Dearg Single Malt"
+    ],
+    "whiskeys_ko": [
+      "아빈 자르그 싱글 몰트"
     ]
   },
   {
@@ -1573,6 +2241,10 @@
     "whiskeys": [
       "Lagg Kilmory Edition",
       "Lagg Corriecravie Edition"
+    ],
+    "whiskeys_ko": [
+      "라그 Kilmory Edition",
+      "라그 Corriecravie Edition"
     ]
   },
   {
@@ -1581,6 +2253,10 @@
     "name": "Dublin Liberties Distillery",
     "name_ko": "더블린 리버티스 증류소",
     "whiskeys": [
+      "The Dublin Liberties Oak Devil",
+      "The Dublin Liberties Copper Alley"
+    ],
+    "whiskeys_ko": [
       "The Dublin Liberties Oak Devil",
       "The Dublin Liberties Copper Alley"
     ]
@@ -1593,6 +2269,10 @@
     "whiskeys": [
       "Pearse Original",
       "Pearse Founder's Choice"
+    ],
+    "whiskeys_ko": [
+      "Pearse 오리지널",
+      "Pearse Founder's Choice"
     ]
   },
   {
@@ -1602,6 +2282,9 @@
     "name_ko": "로 앤 코 증류소",
     "whiskeys": [
       "Roe & Co Irish Whiskey"
+    ],
+    "whiskeys_ko": [
+      "Roe & Co 아이리시 위스키"
     ]
   },
   {
@@ -1611,6 +2294,10 @@
     "name_ko": "보안 증류소",
     "whiskeys": [
       "The Whistler Double Oaked",
+      "The Whistler P.X. I Love You"
+    ],
+    "whiskeys_ko": [
+      "The Whistler 더블 오크",
       "The Whistler P.X. I Love You"
     ]
   },
@@ -1622,6 +2309,10 @@
     "whiskeys": [
       "Clan Colla 7 Year Old",
       "UAIS Irish Whiskey"
+    ],
+    "whiskeys_ko": [
+      "Clan Colla 7년",
+      "UAIS 아이리시 위스키"
     ]
   },
   {
@@ -1631,6 +2322,9 @@
     "name_ko": "밸리키프 증류소",
     "whiskeys": [
       "Ballykeefe Single Pot Still Irish Whiskey"
+    ],
+    "whiskeys_ko": [
+      "Ballykeefe 싱글 포트 스틸 아이리시 위스키"
     ]
   },
   {
@@ -1641,6 +2335,10 @@
     "whiskeys": [
       "Blacks Black Smoke",
       "Blacks Single Malt"
+    ],
+    "whiskeys_ko": [
+      "블랙s 블랙 Smoke",
+      "블랙s 싱글 몰트"
     ]
   },
   {
@@ -1651,6 +2349,10 @@
     "whiskeys": [
       "Blackwater Velvet Cap",
       "Blackwater Dirtgrain"
+    ],
+    "whiskeys_ko": [
+      "블랙water Velvet Cap",
+      "블랙water Dirtgrain"
     ]
   },
   {
@@ -1659,6 +2361,10 @@
     "name": "The Ardara Distillery",
     "name_ko": "아다라 증류소",
     "whiskeys": [
+      "Sliabh Liag The Legendary Silkie",
+      "The Midnight Silkie"
+    ],
+    "whiskeys_ko": [
       "Sliabh Liag The Legendary Silkie",
       "The Midnight Silkie"
     ]
@@ -1671,6 +2377,10 @@
     "whiskeys": [
       "Athrú Knocknarea",
       "Athrú Annacoona"
+    ],
+    "whiskeys_ko": [
+      "Athrú Knocknarea",
+      "Athrú Annacoona"
     ]
   },
   {
@@ -1681,6 +2391,10 @@
     "whiskeys": [
       "McConnell's Irish Whisky 5 Year Old",
       "McConnell's Sherry Cask Finish"
+    ],
+    "whiskeys_ko": [
+      "McConnell's Irish 위스키 5년",
+      "McConnell's 셰리 캐스크 Finish"
     ]
   },
   {
@@ -1690,6 +2404,9 @@
     "name_ko": "타이타닉 디스틸러스",
     "whiskeys": [
       "Titanic Distillers Premium Irish Whiskey"
+    ],
+    "whiskeys_ko": [
+      "Titanic Distillers Premium 아이리시 위스키"
     ]
   },
   {
@@ -1700,6 +2417,10 @@
     "whiskeys": [
       "Hinch Small Batch",
       "Hinch 10 Year Old Sherry Cask Finish"
+    ],
+    "whiskeys_ko": [
+      "Hinch 스몰 배치",
+      "Hinch 10년 셰리 캐스크 Finish"
     ]
   },
   {
@@ -1710,6 +2431,10 @@
     "whiskeys": [
       "Dunville's PX 10 Year Old",
       "Dunville's Three Crowns"
+    ],
+    "whiskeys_ko": [
+      "Dunville's PX 10년",
+      "Dunville's Three Crowns"
     ]
   },
   {
@@ -1718,6 +2443,10 @@
     "name": "Killowen Distillery",
     "name_ko": "킬로웬 증류소",
     "whiskeys": [
+      "Killowen Barántúil",
+      "Killowen Rum & Raisin"
+    ],
+    "whiskeys_ko": [
       "Killowen Barántúil",
       "Killowen Rum & Raisin"
     ]
@@ -1730,6 +2459,10 @@
     "whiskeys": [
       "The Busker Triple Cask",
       "The Busker Single Malt"
+    ],
+    "whiskeys_ko": [
+      "The Busker Triple Cask",
+      "The Busker 싱글 몰트"
     ]
   },
   {
@@ -1739,6 +2472,9 @@
     "name_ko": "레벨 시티 증류소",
     "whiskeys": [
       "Maharani Irish Whiskey"
+    ],
+    "whiskeys_ko": [
+      "Maharani 아이리시 위스키"
     ]
   },
   {
@@ -1750,6 +2486,11 @@
       "West Cork Bourbon Cask",
       "West Cork Black Cask",
       "West Cork Single Malt"
+    ],
+    "whiskeys_ko": [
+      "West Cork 버번 Cask",
+      "West Cork 블랙 Cask",
+      "West Cork 싱글 몰트"
     ]
   },
   {
@@ -1760,6 +2501,10 @@
     "whiskeys": [
       "Hokkaido Whisky",
       "Benizakura Single Malt"
+    ],
+    "whiskeys_ko": [
+      "Hokkaido 위스키",
+      "Benizakura 싱글 몰트"
     ]
   },
   {
@@ -1769,6 +2514,9 @@
     "name_ko": "마오이 증류소",
     "whiskeys": [
       "Maoi Whisky"
+    ],
+    "whiskeys_ko": [
+      "Maoi 위스키"
     ]
   },
   {
@@ -1778,6 +2526,9 @@
     "name_ko": "코모로 증류소",
     "whiskeys": [
       "Komoro Single Malt"
+    ],
+    "whiskeys_ko": [
+      "Komoro 싱글 몰트"
     ]
   },
   {
@@ -1787,6 +2538,10 @@
     "name_ko": "코마가타케 증류소",
     "whiskeys": [
       "Single Malt Komagatake",
+      "Komagatake Limited Edition"
+    ],
+    "whiskeys_ko": [
+      "싱글 몰트 Komagatake",
       "Komagatake Limited Edition"
     ]
   },
@@ -1798,6 +2553,10 @@
     "whiskeys": [
       "Akashi Single Malt",
       "Akashi Meïsei"
+    ],
+    "whiskeys_ko": [
+      "Akashi 싱글 몰트",
+      "Akashi Meïsei"
     ]
   },
   {
@@ -1808,6 +2567,10 @@
     "whiskeys": [
       "Hatozaki Pure Malt",
       "Hatozaki Small Batch"
+    ],
+    "whiskeys_ko": [
+      "Hatozaki Pure Malt",
+      "Hatozaki 스몰 배치"
     ]
   },
   {
@@ -1818,6 +2581,10 @@
     "whiskeys": [
       "Amahagan World Malt Edition No.1",
       "Nagahama Single Malt"
+    ],
+    "whiskeys_ko": [
+      "Amahagan World Malt Edition No.1",
+      "Nagahama 싱글 몰트"
     ]
   },
   {
@@ -1827,6 +2594,9 @@
     "name_ko": "쿠주 증류소",
     "whiskeys": [
       "Kuju Single Malt"
+    ],
+    "whiskeys_ko": [
+      "Kuju 싱글 몰트"
     ]
   },
   {
@@ -1837,6 +2607,10 @@
     "whiskeys": [
       "Yamaga New Born",
       "Yamaga Single Malt"
+    ],
+    "whiskeys_ko": [
+      "Yamaga New Born",
+      "Yamaga 싱글 몰트"
     ]
   },
   {
@@ -1845,6 +2619,11 @@
     "name": "Rabbit Hole Distillery",
     "name_ko": "래빗 홀 증류소",
     "whiskeys": [
+      "Rabbit Hole Cavehill",
+      "Rabbit Hole Heigold",
+      "Rabbit Hole Dareringer"
+    ],
+    "whiskeys_ko": [
       "Rabbit Hole Cavehill",
       "Rabbit Hole Heigold",
       "Rabbit Hole Dareringer"
@@ -1858,6 +2637,10 @@
     "whiskeys": [
       "Town Branch Bourbon",
       "Town Branch Rye"
+    ],
+    "whiskeys_ko": [
+      "Town Branch 버번",
+      "Town Branch 라이"
     ]
   },
   {
@@ -1868,6 +2651,10 @@
     "whiskeys": [
       "Bluegrass Kentucky Straight Bourbon",
       "Bluegrass Wheated Bourbon"
+    ],
+    "whiskeys_ko": [
+      "Bluegrass 켄터키 스트레이트 버번",
+      "Bluegrass Wheated 버번"
     ]
   },
   {
@@ -1879,6 +2666,11 @@
       "Ezra Brooks 99",
       "Rebel 100",
       "Daviess County Bourbon"
+    ],
+    "whiskeys_ko": [
+      "Ezra Brooks 99",
+      "Rebel 100",
+      "Daviess County 버번"
     ]
   },
   {
@@ -1887,6 +2679,10 @@
     "name": "Preservation Distillery",
     "name_ko": "프리저베이션 증류소",
     "whiskeys": [
+      "Very Olde St. Nick",
+      "Rare Perfection"
+    ],
+    "whiskeys_ko": [
       "Very Olde St. Nick",
       "Rare Perfection"
     ]
@@ -1899,6 +2695,10 @@
     "whiskeys": [
       "Kentucky Peerless Straight Bourbon",
       "Kentucky Peerless Straight Rye"
+    ],
+    "whiskeys_ko": [
+      "켄터키 피어리스 스트레이트 버번",
+      "켄터키 피어리스 스트레이트 라이"
     ]
   },
   {
@@ -1909,6 +2709,10 @@
     "whiskeys": [
       "Michter's US*1 Bourbon",
       "Michter's US*1 Rye"
+    ],
+    "whiskeys_ko": [
+      "믹터스 US*1 버번",
+      "믹터스 US*1 라이"
     ]
   },
   {
@@ -1919,6 +2723,10 @@
     "whiskeys": [
       "Nelson's Green Brier Tennessee Whiskey",
       "Belle Meade Bourbon"
+    ],
+    "whiskeys_ko": [
+      "Nelson's Green Brier Tennessee 위스키",
+      "Belle Meade 버번"
     ]
   },
   {
@@ -1929,6 +2737,10 @@
     "whiskeys": [
       "Corsair Triple Smoke",
       "Corsair Dark Rye"
+    ],
+    "whiskeys_ko": [
+      "Corsair Triple Smoke",
+      "Corsair Dark 라이"
     ]
   },
   {
@@ -1940,6 +2752,11 @@
       "KOVAL Bourbon",
       "KOVAL Rye",
       "KOVAL Four Grain"
+    ],
+    "whiskeys_ko": [
+      "KOVAL 버번",
+      "KOVAL 라이",
+      "KOVAL Four Grain"
     ]
   },
   {
@@ -1949,6 +2766,9 @@
     "name_ko": "CH 증류소",
     "whiskeys": [
       "Jeppson's Bourbon"
+    ],
+    "whiskeys_ko": [
+      "Jeppson's 버번"
     ]
   },
   {
@@ -1960,6 +2780,11 @@
       "Stranahan's Original",
       "Stranahan's Blue Peak",
       "Stranahan's Sherry Cask"
+    ],
+    "whiskeys_ko": [
+      "Stranahan's 오리지널",
+      "Stranahan's Blue Peak",
+      "Stranahan's 셰리 캐스크"
     ]
   },
   {
@@ -1970,6 +2795,10 @@
     "whiskeys": [
       "Westward American Single Malt",
       "Westward American Single Malt Stout Cask"
+    ],
+    "whiskeys_ko": [
+      "Westward American 싱글 몰트",
+      "Westward American 싱글 몰트 Stout Cask"
     ]
   },
   {
@@ -1980,6 +2809,10 @@
     "whiskeys": [
       "Bull Run American Whiskey",
       "Bull Run Straight Bourbon"
+    ],
+    "whiskeys_ko": [
+      "Bull Run American 위스키",
+      "Bull Run 스트레이트 버번"
     ]
   },
   {
@@ -1989,6 +2822,11 @@
     "name_ko": "웨스트랜드 증류소",
     "whiskeys": [
       "Westland American Single Malt",
+      "Westland Garryana",
+      "Westland Colere"
+    ],
+    "whiskeys_ko": [
+      "Westland American 싱글 몰트",
       "Westland Garryana",
       "Westland Colere"
     ]
@@ -2001,6 +2839,10 @@
     "whiskeys": [
       "Copperworks American Single Malt",
       "Copperworks Peated Single Malt"
+    ],
+    "whiskeys_ko": [
+      "Copperworks American 싱글 몰트",
+      "Copperworks Peated 싱글 몰트"
     ]
   },
   {
@@ -2010,6 +2852,9 @@
     "name_ko": "스피릿 오브 요크 증류소",
     "whiskeys": [
       "Spirit of York Canadian Whisky"
+    ],
+    "whiskeys_ko": [
+      "Spirit of York Canadian 위스키"
     ]
   },
   {
@@ -2020,6 +2865,10 @@
     "whiskeys": [
       "Sullivans Cove French Oak",
       "Sullivans Cove American Oak"
+    ],
+    "whiskeys_ko": [
+      "Sullivans Cove French Oak",
+      "Sullivans Cove 아메리칸 오크"
     ]
   },
   {
@@ -2029,6 +2878,9 @@
     "name_ko": "낸트 증류소",
     "whiskeys": [
       "Nant Single Malt Whisky"
+    ],
+    "whiskeys_ko": [
+      "Nant 싱글 몰트 위스키"
     ]
   },
   {
@@ -2039,6 +2891,10 @@
     "whiskeys": [
       "Old Kempton Single Malt",
       "Old Kempton Solera Cask"
+    ],
+    "whiskeys_ko": [
+      "Old Kempton 싱글 몰트",
+      "Old Kempton 솔레라 Cask"
     ]
   },
   {
@@ -2050,6 +2906,11 @@
       "Starward Nova",
       "Starward Two-Fold",
       "Starward Solera"
+    ],
+    "whiskeys_ko": [
+      "Starward Nova",
+      "Starward Two-Fold",
+      "Starward 솔레라"
     ]
   },
   {
@@ -2058,6 +2919,11 @@
     "name": "High Coast Distillery",
     "name_ko": "하이 코스트 증류소",
     "whiskeys": [
+      "High Coast Berg",
+      "High Coast Timmer",
+      "High Coast Hav"
+    ],
+    "whiskeys_ko": [
       "High Coast Berg",
       "High Coast Timmer",
       "High Coast Hav"
@@ -2071,6 +2937,10 @@
     "whiskeys": [
       "Mackmyra Svensk Ek",
       "Mackmyra Brukswhisky"
+    ],
+    "whiskeys_ko": [
+      "Mackmyra Svensk Ek",
+      "Mackmyra Brukswhisky"
     ]
   },
   {
@@ -2081,6 +2951,10 @@
     "whiskeys": [
       "Slyrs Classic",
       "Slyrs 12 Year Old"
+    ],
+    "whiskeys_ko": [
+      "Slyrs 클래식",
+      "Slyrs 12년"
     ]
   },
   {
@@ -2091,6 +2965,10 @@
     "whiskeys": [
       "St. Kilian Classic",
       "St. Kilian Peated"
+    ],
+    "whiskeys_ko": [
+      "St. Kilian 클래식",
+      "St. Kilian Peated"
     ]
   },
   {
@@ -2100,6 +2978,9 @@
     "name_ko": "루겐브로이 증류소",
     "whiskeys": [
       "Swiss Mountain Single Malt Whisky"
+    ],
+    "whiskeys_ko": [
+      "Swiss Mountain 싱글 몰트 위스키"
     ]
   },
   {
@@ -2109,6 +2990,9 @@
     "name_ko": "신자토 주조",
     "whiskeys": [
       "Shinzato Whisky"
+    ],
+    "whiskeys_ko": [
+      "Shinzato 위스키"
     ]
   }
 ]
