@@ -50,14 +50,14 @@ export default function CollectionBrowser({ items, collection, collections }) {
       <div className="rounded-3xl border border-white/50 bg-white/65 p-5 shadow-soft sm:p-6">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
-            <p className="text-sm font-medium uppercase tracking-[0.2em] text-ink/50">Collection Detail</p>
+            <p className="text-sm font-medium uppercase tracking-[0.2em] text-ink/50">Archiving Detail</p>
             <h2 className="hero-title mt-2 text-3xl font-semibold text-ink">{collection.title}</h2>
           </div>
           <Link
             href="/archive"
             className="rounded-full border border-oak/20 px-4 py-2 text-sm font-semibold text-oak transition hover:bg-oak hover:text-white"
           >
-            컬렉션 목록으로
+            아카이빙 목록으로
           </Link>
         </div>
 
