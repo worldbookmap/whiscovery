@@ -119,10 +119,8 @@ export default function CollectionBrowser({ items, collection, collections }) {
               <Image
                 src={item.imageUrl}
                 alt={item.title}
-                width={320}
-                height={180}
-                quality={20}
-                sizes="(max-width: 640px) 100vw, 33vw"
+                width={640}
+                height={320}
                 className="h-40 w-full rounded-xl object-cover"
                 unoptimized
               />

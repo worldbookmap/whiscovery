@@ -114,6 +114,12 @@ const normalizeImageUrl = (imageUrl, options = {}) => {
 
   try {
     const url = new URL(imageUrl);
+    const hasSignedAwsQuery = Array.from(url.searchParams.keys()).some((key) => key.toLowerCase().startsWith("x-amz-"));
+
+    if (hasSignedAwsQuery) {
+      return imageUrl;
+    }
+
     const isNotionHosted = [
       "notion.so",
       "notion.site",
@@ -144,6 +150,52 @@ const getFileUrl = (fileItem) => {
   if (!fileItem) return "";
   if (fileItem.type === "external") return fileItem.external?.url || "";
   if (fileItem.type === "file") return fileItem.file?.url || "";
+  return "";
+};
+
+const looksLikeImageUrl = (value) => {
+  if (!value || typeof value !== "string") return false;
+
+  const trimmedValue = value.trim();
+  if (!trimmedValue) return false;
+
+  try {
+    const url = new URL(trimmedValue);
+    const pathname = url.pathname.toLowerCase();
+    const extension = pathname.split(".").pop() || "";
+
+    return ["png", "jpg", "jpeg", "gif", "webp", "svg", "avif", "bmp"].includes(extension) || url.hostname.includes("notion") || url.hostname.includes("amazonaws") || url.hostname.includes("images.unsplash") || trimmedValue.includes("image");
+  } catch (error) {
+    return false;
+  }
+};
+
+const getPropertyImageUrl = (property) => {
+  if (!property) return "";
+
+  if (property.type === "files") {
+    for (const fileItem of property.files || []) {
+      const fileUrl = getFileUrl(fileItem);
+      if (fileUrl && looksLikeImageUrl(fileUrl)) {
+        return fileUrl;
+      }
+    }
+  }
+
+  if (property.type === "url") {
+    const urlValue = property.url || "";
+    if (looksLikeImageUrl(urlValue)) {
+      return urlValue;
+    }
+  }
+
+  if (property.type === "rich_text" || property.type === "title") {
+    const plainValue = parsePropertyValue(property);
+    if (looksLikeImageUrl(plainValue)) {
+      return plainValue;
+    }
+  }
+
   return "";
 };
 
@@ -235,9 +287,11 @@ const getFirstImageFromPage = async (page) => {
   const coverImage = getImageUrl(page.cover);
   if (coverImage) return coverImage;
 
-  const fileProperty = Object.values(page.properties || {}).find((property) => property.type === "files" && property.files?.length);
-  if (fileProperty?.files?.length) {
-    return getFileUrl(fileProperty.files[0]);
+  for (const property of Object.values(page.properties || {})) {
+    const propertyImageUrl = getPropertyImageUrl(property);
+    if (propertyImageUrl) {
+      return propertyImageUrl;
+    }
   }
 
   return getFirstImageFromPageBlocks(page.id);

@@ -1,57 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
-function PreviewImage({ src, alt }) {
-  const [status, setStatus] = useState("loading");
-  const isLoaded = status === "loaded";
-  const isError = status === "error";
-
-  if (isError) {
-    return (
-      <div className="ml-2 flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-oak/10 bg-oak/10 text-[10px] font-semibold uppercase tracking-[0.2em] text-oak/45 shadow-sm sm:h-14 sm:w-14">
-        No image
-      </div>
-    );
-  }
-
-  return (
-    <div className="ml-2 relative h-12 w-12 shrink-0 overflow-hidden rounded-xl border border-oak/10 bg-white/80 shadow-sm sm:h-14 sm:w-14">
-      {!isLoaded ? (
-        <div className="absolute inset-0 z-10 flex items-center justify-center overflow-hidden bg-[linear-gradient(110deg,rgba(245,158,11,0.14)_0%,rgba(255,255,255,0.75)_45%,rgba(245,158,11,0.14)_90%)] bg-[length:200%_100%] animate-[shimmer_1.2s_linear_infinite]">
-          <div className="h-4 w-4 rounded-full bg-oak/25" />
-        </div>
-      ) : null}
-      <img
-        src={src}
-        alt={alt}
-        width={48}
-        height={48}
-        loading="lazy"
-        decoding="async"
-        className={`h-full w-full object-cover transition-opacity duration-300 ${isLoaded ? "opacity-100" : "opacity-0"}`}
-        onLoad={() => setStatus("loaded")}
-        onError={() => setStatus("error")}
-      />
-    </div>
-  );
-}
-
-function PreviewCardSkeleton() {
-  return (
-    <div className="flex items-start justify-between gap-3 rounded-2xl border border-white/70 bg-white/70 p-4">
-      <div className="min-w-0 flex-1">
-        <div className="h-4 w-24 rounded-full bg-[linear-gradient(110deg,rgba(180,83,9,0.16)_0%,rgba(255,247,237,0.95)_45%,rgba(180,83,9,0.16)_90%)] bg-[length:220%_100%] animate-[shimmer_1.4s_ease-in-out_infinite]" />
-        <div className="mt-2 space-y-2">
-          <div className="h-3 w-full rounded-full bg-[linear-gradient(110deg,rgba(245,158,11,0.12)_0%,rgba(255,250,240,0.95)_45%,rgba(245,158,11,0.12)_90%)] bg-[length:220%_100%] animate-[shimmer_1.4s_ease-in-out_infinite]" />
-          <div className="h-3 w-3/4 rounded-full bg-[linear-gradient(110deg,rgba(245,158,11,0.12)_0%,rgba(255,250,240,0.95)_45%,rgba(245,158,11,0.12)_90%)] bg-[length:220%_100%] animate-[shimmer_1.4s_ease-in-out_infinite]" />
-        </div>
-      </div>
-      <div className="ml-2 h-12 w-12 rounded-xl bg-[linear-gradient(110deg,rgba(180,83,9,0.16)_0%,rgba(255,247,237,0.95)_45%,rgba(180,83,9,0.16)_90%)] bg-[length:220%_100%] animate-[shimmer_1.4s_ease-in-out_infinite] sm:h-14 sm:w-14" />
-    </div>
-  );
-}
 
 const getItemsPerRow = () => {
   if (typeof window === "undefined") {
@@ -126,10 +77,9 @@ export default function CollectionPreviewSection({ box }) {
       {!box.errorMessage ? (
         <>
           {isLoading ? (
-            <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {Array.from({ length: 3 }).map((_, index) => (
-                <PreviewCardSkeleton key={`skeleton-${index}`} />
-              ))}
+            <div className="mt-4 flex items-center justify-center gap-2 rounded-2xl border border-oak/10 bg-white/70 py-6 text-sm text-ink/70">
+              <div className="h-4 w-4 animate-spin rounded-full border-2 border-oak/25 border-t-oak" />
+              <span>기록을 불러오는 중입니다…</span>
             </div>
           ) : null}
 
@@ -156,23 +106,35 @@ export default function CollectionPreviewSection({ box }) {
                           ))}
                         </div>
                       </div>
-                      {showPreview ? <PreviewImage src={item.imageUrl} alt={`${item.title} 첫 첨부 사진`} /> : null}
+                      {showPreview ? (
+                        <div className="ml-2 shrink-0 overflow-hidden rounded-xl border border-oak/10 bg-white/80 shadow-sm">
+                          <Image
+                            src={item.imageUrl}
+                            alt={`${item.title} 첫 첨부 사진`}
+                            width={56}
+                            height={56}
+                            quality={25}
+                            sizes="56px"
+                            className="h-14 w-14 object-cover sm:h-16 sm:w-16"
+                            priority={false}
+                            loading="lazy"
+                            unoptimized
+                          />
+                        </div>
+                      ) : null}
                     </Link>
                   );
                 })}
               </div>
 
               {hasMoreItems ? (
-                <div className="mt-5 flex justify-center">
-                  <button
-                    type="button"
-                    onClick={() => setVisibleCount((prev) => Math.min(prev + itemsPerRow, box.items.length))}
-                    className="group relative inline-flex items-center justify-center px-3 py-2 text-sm font-semibold text-oak/80 transition-all duration-200 hover:text-oak"
-                  >
-                    <span className="absolute bottom-1.5 h-px w-full rounded-full bg-gradient-to-r from-transparent via-amber/60 to-transparent transition-all duration-200 group-hover:h-2 group-hover:rounded-full group-hover:bg-amber/20" />
-                    <span className="relative">더 보기</span>
-                  </button>
-                </div>
+                <button
+                  type="button"
+                  onClick={() => setVisibleCount((prev) => Math.min(prev + itemsPerRow, box.items.length))}
+                  className="mt-4 text-sm font-semibold text-oak/80 underline decoration-oak/40 underline-offset-2 transition hover:text-oak"
+                >
+                  더 보기
+                </button>
               ) : null}
             </>
           ) : null}

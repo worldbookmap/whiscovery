@@ -65,6 +65,19 @@ export default async function ItemDetailPage({ params }) {
         </div>
 
         <article className="overflow-hidden rounded-3xl border border-white/50 bg-white/70 shadow-soft">
+          {item.imageUrl ? (
+            <Image
+              src={item.imageUrl}
+              alt={item.title}
+              width={1200}
+              height={720}
+              className="h-72 w-full object-cover"
+              unoptimized
+            />
+          ) : (
+            <div className="flex h-72 w-full items-center justify-center bg-oak/10 text-sm text-oak/45">No image</div>
+          )}
+
           <div className="grid gap-6 p-6 md:p-8">
             <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
               {item.displayFields.map((field) => (
@@ -114,7 +127,7 @@ export default async function ItemDetailPage({ params }) {
                   if (block.type === "image") {
                     return (
                       <div key={`${block.type}-${index}`} className="overflow-hidden rounded-2xl border border-oak/10 bg-white/60">
-                        <Image src={block.url} alt={block.caption || item.title} width={640} height={360} quality={20} sizes="(max-width: 768px) 100vw, 768px" className="w-full object-cover" unoptimized />
+                        <Image src={block.url} alt={block.caption || item.title} width={1200} height={720} className="w-full object-cover" unoptimized />
                         {block.caption ? <p className="px-4 py-3 text-xs text-ink/55">{block.caption}</p> : null}
                       </div>
                     );
