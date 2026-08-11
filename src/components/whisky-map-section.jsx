@@ -337,22 +337,22 @@ export default function WhiskyMapSection({ linkedSources = [] }) {
           onClick={() => setShowAllPins(false)}
           className={`rounded-full px-3 py-1.5 text-xs font-semibold transition ${
             !showAllPins
-              ? "bg-oak text-white"
+              ? "border border-red-300 bg-red-100 text-red-700"
               : "border border-oak/20 bg-white/70 text-ink/70 hover:border-oak/35 hover:text-oak"
           }`}
         >
-          연결된 핀만
+          기록있는 증류소
         </button>
         <button
           type="button"
           onClick={() => setShowAllPins(true)}
           className={`rounded-full px-3 py-1.5 text-xs font-semibold transition ${
             showAllPins
-              ? "bg-oak text-white"
+              ? "border border-red-300 bg-red-100 text-red-700"
               : "border border-oak/20 bg-white/70 text-ink/70 hover:border-oak/35 hover:text-oak"
           }`}
         >
-          전체 보기
+          전체 증류소
         </button>
         <span className="text-xs text-ink/60">
           표시 중: {visibleLocationList.length} / 전체 {locationList.length}
