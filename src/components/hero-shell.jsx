@@ -68,7 +68,11 @@ export default function HeroShell({ collection, itemTitle }) {
           노션바로가기
         </a>
       </div>
-      <Link href="/" className="hero-title inline-block text-4xl font-semibold leading-tight text-ink transition hover:text-oak sm:text-5xl">
+      <Link
+        href="/"
+        className="hero-title inline-block text-4xl leading-tight text-ink transition hover:text-oak sm:text-5xl"
+        style={{ fontFamily: '"Kaushan Script", cursive', fontWeight: 400 }}
+      >
         WhiscoveryCS
       </Link>
       <p className="mt-4 max-w-2xl whitespace-pre-line text-sm leading-relaxed text-ink/80 sm:text-base">
