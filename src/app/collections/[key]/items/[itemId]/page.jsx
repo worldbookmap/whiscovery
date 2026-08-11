@@ -24,7 +24,7 @@ export default async function ItemDetailPage({ params }) {
   const nextItem = currentIndex < items.length - 1 ? items[currentIndex + 1] : null;
 
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-4 pb-16 pt-10 sm:px-8">
+    <main className="mx-auto flex min-h-[100svh] w-full max-w-6xl flex-col px-4 pb-16 pt-10 sm:px-8">
       <HeroShell collection={collection} itemTitle={item.title} />
 
       <section className="mx-auto mt-8 flex w-full max-w-4xl flex-col gap-6">

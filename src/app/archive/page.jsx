@@ -31,7 +31,7 @@ export default async function ArchivePage() {
   }));
 
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-4 pb-16 pt-10 sm:px-8">
+    <main className="mx-auto flex min-h-[100svh] w-full max-w-6xl flex-col px-4 pb-16 pt-10 sm:px-8">
       <HeroShell />
 
       <div className="mt-8">

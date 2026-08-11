@@ -22,7 +22,7 @@ export default async function CollectionDetailPage({ params }) {
 
   if (errorMessage) {
     return (
-      <main className="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-4 pb-16 pt-10 sm:px-8">
+      <main className="mx-auto flex min-h-[100svh] w-full max-w-6xl flex-col px-4 pb-16 pt-10 sm:px-8">
         <HeroShell />
         <section className="mx-auto mt-8 flex w-full max-w-4xl flex-col gap-6">
           <div className="rounded-2xl border border-red-300 bg-red-50 p-4 text-sm text-red-700">
@@ -35,7 +35,7 @@ export default async function CollectionDetailPage({ params }) {
   }
 
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-4 pb-16 pt-10 sm:px-8">
+    <main className="mx-auto flex min-h-[100svh] w-full max-w-6xl flex-col px-4 pb-16 pt-10 sm:px-8">
       <HeroShell collection={collection} />
       <CollectionBrowser items={items} collection={collection} collections={DATABASE_BOXES} />
     </main>

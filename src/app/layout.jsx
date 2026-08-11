@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
         <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet" />
       </head>
       <body className="antialiased">
-        <div className="flex min-h-screen flex-col">
+        <div className="flex min-h-[100svh] flex-col">
           <div className="flex-1">{children}</div>
           <footer className="px-4 pb-5 text-center text-xs text-ink/45 sm:px-8">
             제작자: 정진욱
