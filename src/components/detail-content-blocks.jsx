@@ -14,7 +14,6 @@ const getIsMobile = () => {
 export default function DetailContentBlocks({ contentBlocks = [], itemTitle = "" }) {
   const [isMobile, setIsMobile] = useState(getIsMobile);
 
-
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(getIsMobile());
@@ -27,24 +26,6 @@ export default function DetailContentBlocks({ contentBlocks = [], itemTitle = ""
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  useEffect(() => {
-    if (!lightboxImage) {
-      return;
-    }
-
-    const handleKeyDown = (event) => {
-      if (event.key === "Escape") {
-        setLightboxImage(null);
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [lightboxImage]);
 
   const normalizedBlocks = useMemo(() => {
     return contentBlocks.map((block) => {
@@ -119,8 +100,6 @@ export default function DetailContentBlocks({ contentBlocks = [], itemTitle = ""
           return <p key={`${block.type}-${index}`}>{block.text}</p>;
         })}
       </div>
-
-
     </>
   );
 }
