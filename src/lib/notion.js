@@ -376,6 +376,44 @@ export const getConfiguredDatabaseIds = () => {
   return process.env.NOTION_DATABASE_ID ? [process.env.NOTION_DATABASE_ID] : [];
 };
 
+export const getFallbackItemsForCollection = (collection, includeContentText = false) => {
+  const fallbackTitleBase = `${collection.title} 샘플`;
+
+  return Array.from({ length: 3 }, (_, index) => {
+    const id = `fallback-${collection.key}-${index + 1}`;
+    const title = `${fallbackTitleBase} ${index + 1}`;
+    const displayFields = collection.fields.map((field) => {
+      const value = (() => {
+        if (field.key === "date") return `2024-01-${String(index + 1).padStart(2, "0")}`;
+        if (field.key === "leader" || field.key === "participants") return `샘플 참여자 ${index + 1}`;
+        if (field.key === "kind") return "샘플 위스키";
+        if (field.key === "origin") return "샘플 원산지";
+        if (field.key === "text") return "샘플 메모";
+        if (field.key === "tags") return "샘플";
+        return `샘플 ${index + 1}`;
+      })();
+
+      return {
+        key: field.key,
+        label: field.label,
+        value,
+        rawValue: value,
+      };
+    });
+
+    return {
+      id,
+      title,
+      url: `/collections/${collection.key}`,
+      imageUrl: "",
+      displayFields,
+      filterValues: [],
+      searchText: [title, includeContentText ? "샘플 콘텐츠" : ""].filter(Boolean).join(" ").toLowerCase(),
+      contentText: includeContentText ? "샘플 콘텐츠" : "",
+    };
+  });
+};
+
 export const getWhiskyListByDatabaseId = async (databaseId, options = {}) => {
   const { includeContentText = false } = options;
   if (!process.env.NOTION_TOKEN) {
@@ -401,15 +439,22 @@ export const getWhiskyListByDatabaseId = async (databaseId, options = {}) => {
     throw new Error("해당 데이터베이스에 대한 컬렉션 설정을 찾지 못했습니다.");
   }
 
-  const response = await notion.databases.query({
-    database_id: normalizedDatabaseId,
-    page_size: 100,
-  });
+  try {
+    const response = await notion.databases.query({
+      database_id: normalizedDatabaseId,
+      page_size: 100,
+    });
 
-  const items = await Promise.all(response.results.map((page) => mapPageToCollectionItem(collection, page, { includeContentText })));
-  setCachedValue(listCache, cacheKey, items);
+    const items = await Promise.all(response.results.map((page) => mapPageToCollectionItem(collection, page, { includeContentText })));
+    setCachedValue(listCache, cacheKey, items);
 
-  return items;
+    return items;
+  } catch (error) {
+    console.warn("Notion 데이터 로드 실패, 샘플 데이터로 대체합니다:", error.message);
+    const fallbackItems = getFallbackItemsForCollection(collection, includeContentText);
+    setCachedValue(listCache, cacheKey, fallbackItems);
+    return fallbackItems;
+  }
 };
 
 export const getWhiskyItemDetail = async (databaseId, pageId) => {

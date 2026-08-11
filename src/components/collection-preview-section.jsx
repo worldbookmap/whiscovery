@@ -128,13 +128,15 @@ export default function CollectionPreviewSection({ box }) {
               </div>
 
               {hasMoreItems ? (
-                <button
-                  type="button"
-                  onClick={() => setVisibleCount((prev) => Math.min(prev + itemsPerRow, box.items.length))}
-                  className="mt-4 text-sm font-semibold text-oak/80 underline decoration-oak/40 underline-offset-2 transition hover:text-oak"
-                >
-                  더 보기
-                </button>
+                <div className="mt-5 flex justify-center">
+                  <button
+                    type="button"
+                    onClick={() => setVisibleCount((prev) => Math.min(prev + itemsPerRow, box.items.length))}
+                    className="w-full max-w-[180px] rounded-full border border-stone-200 bg-[rgba(250,245,238,0.9)] px-4 py-2 text-sm font-medium text-stone-700 transition hover:border-stone-300 hover:bg-[rgba(245,237,226,0.95)]"
+                  >
+                    더 보기
+                  </button>
+                </div>
               ) : null}
             </>
           ) : null}
